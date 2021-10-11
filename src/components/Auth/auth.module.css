@@ -1,0 +1,15 @@
+.login {
+  background-image: url('../../assets/image/RO-en-20211004-popsignuptwoweeks-perspective_alpha_website_large.jpg');
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.opacity {
+  background-color: rgba(0, 0, 0, 0.45);
+  height: 100%;
+}
+
+.label {
+  color: #606060;
+}
