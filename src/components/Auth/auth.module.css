@@ -1,5 +1,5 @@
 .login {
-  background-image: url('../../assets/image/RO-en-20211004-popsignuptwoweeks-perspective_alpha_website_large.jpg');
+  background-image: url("../../assets/image/RO-en-20211004-popsignuptwoweeks-perspective_alpha_website_large.jpg");
   height: 100%;
   background-repeat: no-repeat;
   background-size: cover;
@@ -13,4 +13,11 @@
 .logo {
   margin-left: 3.75rem;
   margin-top: 1.875rem;
+}
+
+.hidden {
+  display: none;
+}
+.show {
+  display: block;
 }
