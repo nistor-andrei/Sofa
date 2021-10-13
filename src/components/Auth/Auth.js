@@ -1,7 +1,7 @@
 import { Link, useLocation, useHistory } from "react-router-dom";
 import styles from "./auth.module.scss";
 import logo from "../../assets/icons/surface1.svg";
-import danger from "../../assets/icons/exclamation-triangle-solid.svg";
+import danger from "../../assets/icons/warning_white_24dp.svg";
 import { useState } from "react";
 
 function Nav() {
