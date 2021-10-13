@@ -79,3 +79,21 @@
     }
   }
 }
+
+.danger {
+  color: rgb(160, 13, 13);
+}
+
+.alert {
+  background-color: #ff1744;
+  color: #fff;
+  padding: 0.7rem;
+  display: flex;
+  align-items: center;
+  margin-top: 2rem;
+  border-radius: 5px;
+}
+
+.dangersign {
+  color: #fff;
+}
