@@ -12,7 +12,14 @@
 
 .logo {
   margin-left: 3.75rem;
-  margin-top: 1.875rem;
+  padding-top: 1.875rem;
+
+  @media (max-width: 64rem) {
+    display: flex;
+    justify-content: center;
+    margin-left: 0;
+    margin-bottom: 1.25rem;
+  }
 }
 
 .hidden {
@@ -28,12 +35,20 @@
   height: 600px;
   padding: 3.75rem;
   border-radius: 3px;
+
+  @media (max-width: 64rem) {
+    width: 400px;
+    padding: 3rem;
+  }
 }
 
 .center {
   display: flex;
   justify-content: center;
   margin-top: 5rem;
+  @media (max-width: 104rem) {
+    margin-top: 0;
+  }
 }
 
 .input {

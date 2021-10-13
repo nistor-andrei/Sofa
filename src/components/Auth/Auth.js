@@ -5,7 +5,11 @@ import danger from "../../assets/icons/warning_white_24dp.svg";
 import { useState } from "react";
 
 function Nav() {
-  return <img src={logo} alt="logo" className={styles.logo} />;
+  return (
+    <div className={styles.logo}>
+      <img src={logo} alt="logo" />
+    </div>
+  );
 }
 export function Auth() {
   const history = useHistory();
@@ -71,7 +75,7 @@ export function Auth() {
     console.log(data);
     if (data.accessToken) {
       localStorage.setItem("accessToken", data.accessToken);
-      history.push("/home");
+      history.push("/");
     } else {
       setApiError(data);
     }
