@@ -1,0 +1,81 @@
+.login {
+  background-image: url("../../assets/image/RO-en-20211004-popsignuptwoweeks-perspective_alpha_website_large.jpg");
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.opacity {
+  background-color: rgba(0, 0, 0, 0.45);
+  height: 100%;
+}
+
+.logo {
+  margin-left: 3.75rem;
+  margin-top: 1.875rem;
+}
+
+.hidden {
+  display: none;
+}
+.show {
+  display: block;
+}
+
+.box {
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 450px;
+  height: 600px;
+  padding: 3.75rem;
+  border-radius: 3px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  margin-top: 5rem;
+}
+
+.input {
+  margin-bottom: 1rem;
+  border-radius: 3px;
+  padding: 1rem;
+  width: 100%;
+  border: 0;
+  font-size: 1rem;
+  background-color: #333;
+  color: #fff;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.button {
+  cursor: pointer;
+  margin-top: 2rem;
+  background-color: #1976d2;
+  border: 0;
+  color: #fff;
+  width: 100%;
+  padding: 1rem 3rem;
+  font-size: 1rem;
+  border-radius: 3px;
+  font-weight: 600;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  &:hover {
+    background-color: #1363b3;
+  }
+}
+
+.paragraph {
+  color: #fff;
+  margin-top: 1.5rem;
+  a {
+    color: #1363b3;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

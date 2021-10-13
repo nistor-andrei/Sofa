@@ -1,76 +1,67 @@
-import { Box, TextField, Typography, Button, Link } from "@mui/material";
-import { Link as LinkRoute } from "react-router-dom";
-import styles from "./auth.module.css";
+import { Link, useLocation } from "react-router-dom";
+import styles from "./auth.module.scss";
 import logo from "../../assets/icons/surface1.svg";
+import { useState } from "react";
 
 function Nav() {
   return <img src={logo} alt="logo" className={styles.logo} />;
 }
 export function Auth() {
+  const [values, setValues] = useState({
+    email: "",
+    password: "",
+    "retype-password": "",
+  });
+
+  let isLogin = false;
+  const location = useLocation();
+  if (location.pathname.includes("login")) {
+    isLogin = true;
+  }
+
+  function handleChange(e) {
+    const newValue = { ...values };
+    newValue[e.target.name] = e.target.value;
+
+    setValues(newValue);
+  }
+
   return (
     <section className={styles.login}>
       <div className={styles.opacity}>
         <Nav />
-        <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100%" }}>
-          <Box
-            sx={{
-              width: 450,
-              height: 650,
-              backgroundColor: "rgba(0,0,0,.75)",
-              p: "3.75rem",
-              color: "#fff",
-              borderRadius: "3px",
-            }}
-          >
-            <Typography variant="h3" component="h1" sx={{ fontSize: 32 }}>
-              Sign in
-            </Typography>
+        <div className={styles.center}>
+          <div className={styles.box}>
+            <h2>{isLogin ? "Sign in" : "Sign up"}</h2>
             <form>
-              <TextField
-                margin="normal"
-                fullWidth
-                label="Email"
-                id="email"
-                sx={{ color: "#606060", backgroundColor: "#333", borderRadius: 1 }}
-                InputLabelProps={{
-                  style: { color: "#606060" },
-                }}
-                InputProps={{
-                  style: { color: "#fff" },
-                }}
-              />
-              <TextField
+              <input type="text" placeholder="Email" name="email" value={values.email} className={styles.input} onChange={handleChange} />
+              <input
                 type="password"
-                margin="normal"
-                fullWidth
-                label="Password"
-                id="pass"
-                sx={{ color: "#606060", backgroundColor: "#333", borderRadius: 1 }}
-                InputLabelProps={{
-                  style: { color: "#606060" },
-                }}
-                InputProps={{
-                  style: { color: "#fff" },
-                }}
+                placeholder="Password"
+                name="password"
+                value={values.password}
+                className={styles.input}
+                onChange={handleChange}
               />
-
-              <Button
-                variant="contained"
-                fullWidth
-                size="large"
-                sx={{ textTransform: "capitalize", marginTop: "3.125rem", p: ".7rem 0", fontSize: 16 }}
-              >
-                Sign in
-              </Button>
+              {!isLogin && (
+                <input
+                  type="password"
+                  placeholder="Retype Password"
+                  value={values["retype-password"]}
+                  name="retype-password"
+                  className={styles.input}
+                  onChange={handleChange}
+                />
+              )}
+              <button type="submit" className={styles.button}>
+                {isLogin ? "Sign in" : "Sign up"}
+              </button>
             </form>
-            <Typography sx={{ marginTop: "2.5rem" }}>
-              New to SofaTV ?
-              <Link href="/" sx={{ marginLeft: "0.5rem" }} to="/register" component={LinkRoute} underline="hover">
-                Sign up now
-              </Link>
-            </Typography>
-          </Box>
-        </Box>
+            <p className={styles.paragraph}>
+              New to Sofa? <Link to="/register">Click here</Link>
+            </p>
+          </div>
+        </div>
       </div>
     </section>
   );
