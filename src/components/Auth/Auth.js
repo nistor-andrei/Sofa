@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useHistory } from "react-router-dom";
 import styles from "./auth.module.scss";
 import logo from "../../assets/icons/surface1.svg";
 import danger from "../../assets/icons/exclamation-triangle-solid.svg";
@@ -8,6 +8,7 @@ function Nav() {
   return <img src={logo} alt="logo" className={styles.logo} />;
 }
 export function Auth() {
+  const history = useHistory();
   const [values, setValues] = useState({
     email: "",
     password: "",
@@ -46,6 +47,7 @@ export function Auth() {
     if (!isFormValid()) {
       return;
     }
+
     const loginForm = { email: values.email, password: values.password };
     const register = {
       email: values.email,
@@ -66,8 +68,10 @@ export function Auth() {
       },
       body: JSON.stringify(sendData),
     }).then((res) => res.json());
-
+    console.log(data);
     if (data.accessToken) {
+      localStorage.setItem("accessToken", data.accessToken);
+      history.push("/home");
     } else {
       setApiError(data);
     }

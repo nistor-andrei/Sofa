@@ -18,8 +18,7 @@ Start the Json Server Auth
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-.
+Launches the test runner in the interactive watch mode.
 
 ### `npm run build`
 
@@ -28,5 +27,3 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
-
-### `npm run eject`
