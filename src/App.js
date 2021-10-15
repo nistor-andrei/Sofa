@@ -12,10 +12,10 @@ function App() {
           <PrivateRoute exact path="/">
             <Home />
           </PrivateRoute>
-          <Route exact path="/login">
+          <PrivateRoute path="/login">
             <Auth />
-          </Route>
-          <Route exact path="/register">
+          </PrivateRoute>
+          <Route path="/register">
             <Auth />
           </Route>
         </Switch>
