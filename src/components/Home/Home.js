@@ -1,5 +1,5 @@
-import { Nav } from "./Nav/Nav";
-import { getMovieDetail } from "../api/api";
+import { Nav } from './Nav/Nav';
+import { getMovieDetail } from '../api/api';
 
 export function Home() {
   const movie = getMovieDetail();

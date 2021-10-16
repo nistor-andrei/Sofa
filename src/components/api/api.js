@@ -1,4 +1,4 @@
-const apiKey = "6908716cfb66d23290de22769f946f34";
+const apiKey = process.env.REACT_APP_KEY;
 
 const random = Math.floor(Math.random() * 10);
 
