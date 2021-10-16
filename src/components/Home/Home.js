@@ -1,10 +1,17 @@
 import { Nav } from './Nav/Nav';
-import { getMovieDetail } from '../api/api';
+import { data } from '../api/api';
+import { useEffect, useState } from 'react';
 
 export function Home() {
-  const movie = getMovieDetail();
-  console.log(movie);
-
+  const [movie, setMovie] = useState({});
+  useEffect(() => {
+    async function detail() {
+      const dataMovie = await data;
+      setMovie(dataMovie);
+    }
+    detail();
+  }, []);
+  console.log(movie.original_title);
   return (
     <>
       <Nav />
