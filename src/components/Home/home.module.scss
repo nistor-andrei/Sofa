@@ -1,4 +1,4 @@
-@import "../../sass/variables";
+@import '../../sass/variables';
 
 .nav {
   height: 100%;
@@ -47,4 +47,24 @@ main {
 
 .active {
   filter: invert(35%) sepia(88%) saturate(1151%) hue-rotate(184deg) brightness(90%) contrast(88%);
+}
+
+.hero {
+  height: 50rem;
+  display: flex;
+
+  .image {
+    height: 100%;
+    position: relative;
+    &::after {
+      content: '';
+      background: linear-gradient(90deg, #000 0, transparent 50%, transparent);
+      position: absolute;
+      inset: 0;
+      position: absolute;
+    }
+  }
+  img {
+    height: 100%;
+  }
 }
