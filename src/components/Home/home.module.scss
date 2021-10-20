@@ -1,4 +1,4 @@
-@import "../../sass/variables";
+@import '../../sass/variables';
 
 .nav {
   height: 100%;
@@ -50,16 +50,14 @@ main {
 }
 
 .hero {
-  height: 60rem;
   display: flex;
-  align-items: center;
+  align-items: stretch;
 
   .image {
-    height: 100%;
     position: relative;
     width: 100%;
     &::after {
-      content: "";
+      content: '';
       background: linear-gradient(90deg, #000 0, transparent 50%, transparent);
       position: absolute;
       inset: 0;
@@ -67,7 +65,6 @@ main {
     }
   }
   img {
-    height: 100%;
     width: 100%;
     object-fit: cover;
   }
@@ -79,7 +76,6 @@ main {
   flex-direction: column;
   background-color: #000;
   color: #fff;
-  height: 100%;
   width: 43%;
   padding: 5rem 4rem;
 
@@ -107,7 +103,7 @@ main {
     display: inline;
     width: 20px;
     height: 20px;
-    content: url("../../assets/icons/star-solid.svg");
+    content: url('../../assets/icons/star-solid.svg');
     margin-right: 0.2rem;
   }
 }

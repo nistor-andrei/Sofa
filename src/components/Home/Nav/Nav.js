@@ -1,9 +1,9 @@
-import home from "../../../assets/icons/home.svg";
-import movie from "../../../assets/icons/clapperboard.svg";
-import tv from "../../../assets/icons/XMLID_1988_.svg";
-import search from "../../../assets/icons/loupe.svg";
-import styles from "../home.module.scss";
-import { NavLink } from "react-router-dom";
+import home from '../../../assets/icons/home.svg';
+import movie from '../../../assets/icons/clapperboard.svg';
+import tv from '../../../assets/icons/XMLID_1988_.svg';
+import search from '../../../assets/icons/loupe.svg';
+import styles from '../home.module.scss';
+import { NavLink } from 'react-router-dom';
 
 export function Nav() {
   return (
