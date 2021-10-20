@@ -1,5 +1,6 @@
 import { Nav } from './Nav/Nav';
 import { Hero } from './Hero/Hero';
+import { TrendingList } from './TrendingList/TrendingList';
 
 export function Home() {
   return (
@@ -12,6 +13,8 @@ export function Home() {
             <h3>Trending Movie</h3>
             <a href="/">Explore All</a>
           </div>
+          <TrendingList />
+          <div>New</div>
         </article>
       </main>
     </>

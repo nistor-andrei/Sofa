@@ -64,7 +64,7 @@ main {
       position: absolute;
     }
   }
-  img {
+  .poster {
     width: 100%;
     object-fit: cover;
   }
@@ -99,11 +99,7 @@ main {
 }
 
 .star {
-  &::before {
-    display: inline;
-    width: 20px;
-    height: 20px;
-    content: url('../../assets/icons/star-solid.svg');
-    margin-right: 0.2rem;
+  img {
+    margin-right: 0.3rem;
   }
 }

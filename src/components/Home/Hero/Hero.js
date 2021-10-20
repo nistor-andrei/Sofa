@@ -1,6 +1,7 @@
 import { data } from '../../api/api';
 import { useEffect, useState } from 'react';
 import styles from '../home.module.scss';
+import star from '../../../assets/icons/star-solid.svg';
 
 export function Hero() {
   const [movie, setMovie] = useState({});
@@ -13,7 +14,6 @@ export function Hero() {
   }, []);
 
   const year = movie.release_date?.split('-');
-  console.log(year);
 
   function timeConvert(n) {
     let hours = n / 60;
@@ -27,7 +27,10 @@ export function Hero() {
       <div className={styles.panel}>
         <h2>{movie.original_title}</h2>
         <div className={styles.details}>
-          <span className={styles.star}>{movie.vote_average}</span>
+          <span className={styles.star}>
+            <img src={star} alt="review" />
+            {movie.vote_average}
+          </span>
           {movie.vote_count && <span>{`${movie.vote_count} Reviews`}</span>}
           <span>{year?.[0]}</span>
           <span> {timeConvert(movie.runtime)}</span>
@@ -35,7 +38,7 @@ export function Hero() {
         <p>{movie.overview?.substring(0, 200) + '...'}</p>
       </div>
       <div className={styles.image}>
-        <img src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`} alt={movie.original_title} />
+        <img src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`} alt={movie.original_title} className={styles.poster} />
       </div>
     </div>
   );
