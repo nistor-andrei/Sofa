@@ -1,6 +1,10 @@
 import { Nav } from './Nav/Nav';
 import { Hero } from './Hero/Hero';
-import { TrendingList } from './TrendingList/TrendingList';
+import { TrendingMovie } from './TrendingList/TrendingMovie';
+import styles from './home.module.scss';
+import { TrendingTv } from './TrendingList/TrendingTv';
+import { Footer } from '../Footer/Footer';
+import { Link } from 'react-router-dom';
 
 export function Home() {
   return (
@@ -8,14 +12,21 @@ export function Home() {
       <Nav />
       <main>
         <Hero />
-        <article>
-          <div>
+        <article className={styles.article}>
+          <div className={styles.trend}>
             <h3>Trending Movie</h3>
+            <Link to="/movie/category/trend">Explore All</Link>
+          </div>
+          <TrendingMovie />
+        </article>
+        <article className={styles.article}>
+          <div className={styles.trend}>
+            <h3>Trending Tv Show</h3>
             <a href="/">Explore All</a>
           </div>
-          <TrendingList />
-          <div>New</div>
+          <TrendingTv />
         </article>
+        <Footer />
       </main>
     </>
   );

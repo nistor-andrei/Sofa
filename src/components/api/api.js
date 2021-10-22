@@ -20,3 +20,9 @@ export function getTrending(type) {
 }
 
 export const imageUrl = 'https://image.tmdb.org/t/p/original/';
+
+export async function getAllTrending(type, page) {
+  let res = await fetch(`https://api.themoviedb.org/3/trending/${type}/week?api_key=${apiKey}&page=${page}`);
+  let data = await res.json();
+  return data;
+}

@@ -1,5 +1,24 @@
-.item {
+.card {
   img {
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
     width: 100%;
+    &:hover {
+      transform: scale(1.02);
+    }
+  }
+
+  .title {
+    font-size: 1rem;
+    margin: 0.5rem 0 0.5rem 0;
+    font-weight: 400;
+  }
+}
+
+.cardStar {
+  color: #80868b;
+  img {
+    margin-right: 0.5rem;
+    width: 15px;
   }
 }

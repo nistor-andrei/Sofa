@@ -41,10 +41,6 @@ h1 {
   color: #fff;
 }
 
-main {
-  margin-left: 100px;
-}
-
 .active {
   filter: invert(35%) sepia(88%) saturate(1151%) hue-rotate(184deg) brightness(90%) contrast(88%);
 }
@@ -102,4 +98,31 @@ main {
   img {
     margin-right: 0.3rem;
   }
+}
+
+.article {
+  margin: 3rem 0 5rem 50px;
+  h3 {
+    font-size: 1.7rem;
+    color: #fff;
+  }
+}
+
+.trend {
+  display: flex;
+  margin-bottom: 2rem;
+  align-items: center;
+
+  a {
+    text-decoration: none;
+    margin-left: 1rem;
+    color: #2196f3;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+
+.placeholder {
+  background-color: #202124;
 }

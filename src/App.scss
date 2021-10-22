@@ -1,1 +1,14 @@
-@import "sass/global";
+@import 'sass/global';
+
+div.swiper-button-disabled {
+  display: none;
+}
+
+div.swiper-button-prev,
+div.swiper-button-next {
+  color: #fff;
+}
+
+main {
+  margin-left: 100px;
+}

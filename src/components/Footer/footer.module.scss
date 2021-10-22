@@ -1,0 +1,19 @@
+.footer {
+  margin: 2rem 0 0 50px;
+  padding-bottom: 3rem;
+  color: #80868b;
+  display: flex;
+  align-items: center;
+  img {
+    margin-left: 1rem;
+    width: 50px;
+  }
+  span {
+    margin-right: 1rem;
+  }
+
+  .footerCopy {
+    display: flex;
+    align-items: center;
+  }
+}

@@ -1,0 +1,22 @@
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.spacer {
+  margin: 0 auto;
+}
+
+.gridItem {
+  margin: 0.5rem;
+}
+
+.title {
+  color: #fff;
+  margin: 0.5rem 0;
+}
+
+.maintitle {
+  margin-left: 4rem;
+}
