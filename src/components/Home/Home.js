@@ -1,5 +1,5 @@
 import { Nav } from './Nav/Nav';
-import { Hero } from './Hero/Hero';
+import { Hero } from '../Hero/Hero';
 import { TrendingMovie } from './TrendingList/TrendingMovie';
 import styles from './home.module.scss';
 import { TrendingTv } from './TrendingList/TrendingTv';
@@ -22,7 +22,7 @@ export function Home() {
         <article className={styles.article}>
           <div className={styles.trend}>
             <h3>Trending Tv Show</h3>
-            <a href="/">Explore All</a>
+            <Link to="/tv/category/trend">Explore All</Link>
           </div>
           <TrendingTv />
         </article>

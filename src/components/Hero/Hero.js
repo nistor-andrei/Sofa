@@ -1,7 +1,7 @@
-import { data } from '../../api/api';
+import { data } from '../api/api';
 import { useEffect, useState } from 'react';
-import styles from '../home.module.scss';
-import star from '../../../assets/icons/star-solid.svg';
+import styles from '../Home/home.module.scss';
+import star from '../../assets/icons/star-solid.svg';
 
 export function Hero() {
   const [movie, setMovie] = useState({});

@@ -4,7 +4,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Home } from './components/Home/Home';
 import { PrivateRoute } from './components/routes/PrivateRoute';
 import { AuthContextProvider } from './components/Auth/AuthContext.context';
-import { Trending } from './components/Movie/Trending';
+import { TrendingMovie } from './components/Movie/Category/Trending/Trending';
+import { TrendingTvShow } from './components/TvShow/Category/Trending/Trending';
 
 function App() {
   return (
@@ -22,7 +23,10 @@ function App() {
               <Auth />
             </Route>
             <PrivateRoute exact path="/movie/category/trend">
-              <Trending />
+              <TrendingMovie />
+            </PrivateRoute>
+            <PrivateRoute exact path="/tv/category/trend">
+              <TrendingTvShow />
             </PrivateRoute>
           </Switch>
         </Router>
