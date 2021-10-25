@@ -1,4 +1,4 @@
-@import 'sass/global';
+@import "sass/global";
 
 div.swiper-button-disabled {
   display: none;
@@ -19,4 +19,12 @@ article img {
   &:hover {
     transform: scale(1.02);
   }
+}
+
+.hero {
+  margin-left: 100px;
+}
+
+.active {
+  filter: invert(50%) sepia(88%) saturate(1151%) hue-rotate(184deg) brightness(90%) contrast(88%);
 }

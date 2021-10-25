@@ -1,11 +1,12 @@
-import './App.scss';
-import { Auth } from './components/Auth/Auth';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { Home } from './components/Home/Home';
-import { PrivateRoute } from './components/routes/PrivateRoute';
-import { AuthContextProvider } from './components/Auth/AuthContext.context';
-import { TrendingMovie } from './components/Movie/Category/Trending/Trending';
-import { TrendingTvShow } from './components/TvShow/Category/Trending/Trending';
+import "./App.scss";
+import { Auth } from "./components/Auth/Auth";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Home } from "./components/Home/Home";
+import { PrivateRoute } from "./components/routes/PrivateRoute";
+import { AuthContextProvider } from "./components/Auth/AuthContext.context";
+import { TrendingMovie } from "./components/Movie/Category/Trending/Trending";
+import { TrendingTvShow } from "./components/TvShow/Category/Trending/Trending";
+import { Movie } from "./components/Movie/Movie";
 
 function App() {
   return (
@@ -22,6 +23,9 @@ function App() {
             <Route path="/register">
               <Auth />
             </Route>
+            <PrivateRoute exact path="/movie">
+              <Movie />
+            </PrivateRoute>
             <PrivateRoute exact path="/movie/category/trend">
               <TrendingMovie />
             </PrivateRoute>

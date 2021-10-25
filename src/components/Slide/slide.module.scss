@@ -1,0 +1,38 @@
+.article {
+  margin-left: 100px;
+  h3 {
+    font-size: 1.7rem;
+    color: #fff;
+  }
+}
+
+.trend {
+  display: flex;
+  margin-bottom: 2rem;
+  align-items: center;
+
+  a {
+    text-decoration: none;
+    margin-left: 1rem;
+    color: #2196f3;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+
+.card {
+  .title {
+    font-size: 1rem;
+    margin: 0.5rem 0 0.5rem 0;
+    font-weight: 400;
+  }
+}
+
+.cardStar {
+  color: #80868b;
+  img {
+    margin-right: 0.5rem;
+    width: 15px;
+  }
+}

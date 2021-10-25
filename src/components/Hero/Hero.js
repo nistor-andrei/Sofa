@@ -1,29 +1,33 @@
-import { data } from '../api/api';
-import { useEffect, useState } from 'react';
-import styles from '../Home/home.module.scss';
-import star from '../../assets/icons/star-solid.svg';
+import { getMovie } from "../api/api";
+import { useEffect, useState } from "react";
+import styles from "../Home/home.module.scss";
+import star from "../../assets/icons/star-solid.svg";
 
-export function Hero() {
+export function Hero({ mediaType }) {
   const [movie, setMovie] = useState({});
   useEffect(() => {
     async function detail() {
-      const dataMovie = await data;
+      const dataMovie = await getMovie(mediaType);
       setMovie(dataMovie);
     }
     detail();
-  }, []);
+  }, [mediaType]);
 
-  const year = movie.release_date?.split('-');
+  if (!movie) {
+    return <h2>Loading</h2>;
+  }
+
+  const year = movie.release_date?.split("-");
 
   function timeConvert(n) {
     let hours = n / 60;
     let rhours = Math.floor(hours);
     let minutes = (hours - rhours) * 60;
     let rminutes = Math.round(minutes);
-    return rhours + 'h ' + rminutes + 'min';
+    return rhours + "h " + rminutes + "min";
   }
   return (
-    <div className={styles.hero}>
+    <div className={`${styles.hero} hero`}>
       <div className={styles.panel}>
         <h2>{movie.original_title}</h2>
         <div className={styles.details}>
@@ -35,7 +39,7 @@ export function Hero() {
           <span>{year?.[0]}</span>
           <span> {timeConvert(movie.runtime)}</span>
         </div>
-        <p>{movie.overview?.substring(0, 200) + '...'}</p>
+        <p>{movie.overview?.substring(0, 200) + "..."}</p>
       </div>
       <div className={styles.image}>
         <img src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`} alt={movie.original_title} className={styles.poster} />
