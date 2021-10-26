@@ -1,10 +1,10 @@
-import { Nav } from "./Nav/Nav";
 import { Hero } from "../Hero/Hero";
 import { TrendingMovie } from "./TrendingList/TrendingMovie";
 import styles from "./home.module.scss";
 import { TrendingTv } from "./TrendingList/TrendingTv";
 import { Footer } from "../Footer/Footer";
 import { Link } from "react-router-dom";
+import { Nav } from "../Nav/Nav";
 
 export function Home() {
   return (

@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
-import { Nav } from '../Home/Nav/Nav';
-import styles from './explore.module.scss';
-import { Footer } from '../Footer/Footer';
-import InfiniteScroll from 'react-infinite-scroll-component';
-import { getAllTrending } from '../api/api';
+import { useEffect, useState } from "react";
+import styles from "./explore.module.scss";
+import { Footer } from "../Footer/Footer";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { getAllTrending } from "../api/api";
+import { Nav } from "../Nav/Nav";
 
 export function ExploreAll({ mediaType, mainTitle }) {
   const [page, setPage] = useState(1);

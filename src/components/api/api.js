@@ -30,7 +30,6 @@ export async function getAllTrending(type, page) {
   return data;
 }
 
-export function getPopular({ type }) {
-  console.log(type);
+export function getPopular(type) {
   return fetch(`https://api.themoviedb.org/3/movie/${type}?api_key=${apiKey}&language=en-US&page=1`).then((res) => res.json());
 }
