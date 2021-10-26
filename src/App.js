@@ -4,9 +4,13 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Home } from "./components/Home/Home";
 import { PrivateRoute } from "./components/routes/PrivateRoute";
 import { AuthContextProvider } from "./components/Auth/AuthContext.context";
-import { TrendingMovie } from "./components/Movie/Category/Trending/Trending";
+import { TrendingMovie } from "./components/Movie/Category/Trending";
 import { TrendingTvShow } from "./components/TvShow/Category/Trending/Trending";
 import { Movie } from "./components/Movie/Movie";
+import { PopularMovie } from "./components/Movie/Category/Popular";
+import { TopRatedMovie } from "./components/Movie/Category/TopRated";
+import { UpcomingMovie } from "./components/Movie/Category/Upcoming";
+import { NowPlayingMovie } from "./components/Movie/Category/NowPlaying";
 
 function App() {
   return (
@@ -25,6 +29,18 @@ function App() {
             </Route>
             <PrivateRoute exact path="/movie">
               <Movie />
+            </PrivateRoute>
+            <PrivateRoute exact path="/movie/category/popular">
+              <PopularMovie />
+            </PrivateRoute>
+            <PrivateRoute exact path="/movie/category/top_rated">
+              <TopRatedMovie />
+            </PrivateRoute>
+            <PrivateRoute exact path="/movie/category/upcoming">
+              <UpcomingMovie />
+            </PrivateRoute>
+            <PrivateRoute exact path="/movie/category/now_playing">
+              <NowPlayingMovie />
             </PrivateRoute>
             <PrivateRoute exact path="/movie/category/trend">
               <TrendingMovie />

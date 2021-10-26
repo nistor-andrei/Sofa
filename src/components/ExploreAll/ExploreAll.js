@@ -4,16 +4,20 @@ import { Footer } from "../Footer/Footer";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { getAllTrending } from "../api/api";
 import { Nav } from "../Nav/Nav";
+import star from "../../assets/icons/star-solid.svg";
 
-export function ExploreAll({ mediaType, mainTitle }) {
+// Day will be empty anytime for non trending Movie or Tv Show
+// Exemple URL API: https://${url}/3/mediaType/endpoint?apikey=....
+
+export function ExploreAll({ type, mainTitle, endpoint, day }) {
   const [page, setPage] = useState(1);
-  const [images, setImages] = useState([]);
+  const [movie, setMovie] = useState([]);
   const [hasMore, sethasMore] = useState(true);
 
   const fetchData = async () => {
-    const imageApi = await getAllTrending(mediaType, page);
+    const imageApi = await getAllTrending(type, page, endpoint, day);
     setPage((prev) => prev + 1);
-    setImages([...images, ...imageApi.results]);
+    setMovie([...movie, ...imageApi.results]);
     if (imageApi.results.length === 0 || imageApi.results.length < 20) {
       sethasMore(false);
     }
@@ -23,10 +27,10 @@ export function ExploreAll({ mediaType, mainTitle }) {
     fetchData();
   }, []);
 
-  if (!images) {
+  if (!movie) {
     return <h2>Loading...</h2>;
   }
-  console.log(images[0]);
+  console.log(movie[0]);
 
   return (
     <>
@@ -36,18 +40,22 @@ export function ExploreAll({ mediaType, mainTitle }) {
           <h1 className={styles.maintitle}>{mainTitle}</h1>
           <ul>
             <InfiniteScroll
-              dataLength={images.length} //This is important field to render the next data
+              dataLength={movie.length} //This is important field to render the next data
               next={() => fetchData()}
               hasMore={hasMore}
               loader={<h2>Loading..</h2>}
               endMessage={<h2>You are at the end!</h2>}
               className={styles.grid}
             >
-              {images?.map((image) => {
+              {movie?.map((image) => {
                 return (
                   <li className={styles.gridItem} key={image.id}>
                     <img src={`https://image.tmdb.org/t/p/w370_and_h556_bestv2/${image.poster_path}`} alt={image.name} />
                     <p className={styles.title}>{image.original_title}</p>
+                    <span className={styles.star}>
+                      <img src={star} alt="star" />
+                      {image.vote_average}
+                    </span>
                   </li>
                 );
               })}

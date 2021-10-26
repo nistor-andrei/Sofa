@@ -1,5 +1,5 @@
-import { ExploreAll } from '../../../ExploreAll/ExploreAll';
+import { ExploreAll } from "../../../ExploreAll/ExploreAll";
 
 export function TrendingTvShow() {
-  return <ExploreAll mediaType="tv" mainTitle="Trending Tv Show" />;
+  return <ExploreAll type="tv" mainTitle="Trending Tv Show" endpoint="trending" />;
 }
