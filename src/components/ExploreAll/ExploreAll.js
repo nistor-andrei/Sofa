@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
-import styles from "./explore.module.scss";
-import { Footer } from "../Footer/Footer";
-import InfiniteScroll from "react-infinite-scroll-component";
-import { getAllTrending } from "../api/api";
-import { Nav } from "../Nav/Nav";
-import star from "../../assets/icons/star-solid.svg";
+import { useEffect, useState } from 'react';
+import styles from './explore.module.scss';
+import { Footer } from '../Footer/Footer';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import { getAllTrending } from '../api/api';
+import { Nav } from '../Nav/Nav';
+import star from '../../assets/icons/star-solid.svg';
 
 // Day will be empty anytime for non trending Movie or Tv Show
 // Exemple URL API: https://${url}/3/mediaType/endpoint?apikey=....
@@ -24,7 +24,7 @@ export function ExploreAll({ type, mainTitle, endpoint, day }) {
   };
 
   useEffect(() => {
-    fetchData();
+    fetchData(); // eslint-disable-next-line
   }, []);
 
   if (!movie) {
