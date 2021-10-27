@@ -20,9 +20,9 @@ export function Nav() {
           </NavLink>
         </li>
         <li>
-          <a href="/tv">
+          <NavLink activeClassName="active" to="/tv">
             <img src={tv} alt="tv" />
-          </a>
+          </NavLink>
         </li>
         <li>
           <a href="/search">

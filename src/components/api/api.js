@@ -4,14 +4,14 @@ const random = (max, min = 0) => {
   return Math.floor(Math.random() * (max - min) + min);
 };
 
-export function getMovie({ mediaType }) {
+export function getMovie(mediaType) {
   const data = fetch(`https://api.themoviedb.org/3/trending/${mediaType}/week?api_key=${apiKey}`)
     .then((res) => res.json())
     .then(async (data) => {
       let details;
       do {
         const movie = data.results[random(data.results.length)].id;
-        details = await fetch(`https://api.themoviedb.org/3/movie/${movie}?api_key=${apiKey}&language=en-US`).then((res) => res.json());
+        details = await fetch(`https://api.themoviedb.org/3/${mediaType}/${movie}?api_key=${apiKey}&language=en-US`).then((res) => res.json());
       } while (!details.id);
       return details;
     });
@@ -30,6 +30,6 @@ export async function getAllTrending(type, page, endpoint = "movie", day = "week
   return data;
 }
 
-export function getPopular(type) {
-  return fetch(`https://api.themoviedb.org/3/movie/${type}?api_key=${apiKey}&language=en-US&page=1`).then((res) => res.json());
+export function getPopular(type, source = "movie") {
+  return fetch(`https://api.themoviedb.org/3/${source}/${type}?api_key=${apiKey}&language=en-US&page=1`).then((res) => res.json());
 }

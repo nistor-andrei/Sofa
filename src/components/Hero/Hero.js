@@ -8,6 +8,7 @@ export function Hero({ mediaType }) {
   useEffect(() => {
     async function detail() {
       const dataMovie = await getMovie(mediaType);
+
       setMovie(dataMovie);
     }
     detail();
@@ -16,8 +17,14 @@ export function Hero({ mediaType }) {
   if (!movie) {
     return <h2>Loading</h2>;
   }
+  let year;
 
-  const year = movie.release_date?.split("-");
+  if (movie.release_date) {
+    year = movie.release_date?.split("-");
+  }
+
+  year = movie.first_air_date?.split("-");
+  console.log(year);
 
   function timeConvert(n) {
     let hours = n / 60;
@@ -29,7 +36,7 @@ export function Hero({ mediaType }) {
   return (
     <div className={`${styles.hero} hero`}>
       <div className={styles.panel}>
-        <h2>{movie.original_title}</h2>
+        <h2>{movie.original_title || movie.name}</h2>
         <div className={styles.details}>
           <span className={styles.star}>
             <img src={star} alt="review" />
@@ -37,7 +44,7 @@ export function Hero({ mediaType }) {
           </span>
           {movie.vote_count && <span>{`${movie.vote_count} Reviews`}</span>}
           <span>{year?.[0]}</span>
-          <span> {timeConvert(movie.runtime)}</span>
+          <span> {movie.runtime ? timeConvert(movie.runtime) : `Seasons ${movie.seasons?.length} `}</span>
         </div>
         <p>{movie.overview?.substring(0, 200) + "..."}</p>
       </div>

@@ -11,6 +11,7 @@ import { PopularMovie } from "./components/Movie/Category/Popular";
 import { TopRatedMovie } from "./components/Movie/Category/TopRated";
 import { UpcomingMovie } from "./components/Movie/Category/Upcoming";
 import { NowPlayingMovie } from "./components/Movie/Category/NowPlaying";
+import { Tv } from "./components/TvShow/Tv";
 
 function App() {
   return (
@@ -44,6 +45,9 @@ function App() {
             </PrivateRoute>
             <PrivateRoute exact path="/movie/category/trend">
               <TrendingMovie />
+            </PrivateRoute>
+            <PrivateRoute exact path="/tv">
+              <Tv />
             </PrivateRoute>
             <PrivateRoute exact path="/tv/category/trend">
               <TrendingTvShow />
