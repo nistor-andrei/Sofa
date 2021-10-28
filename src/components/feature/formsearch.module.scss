@@ -1,0 +1,20 @@
+.form {
+  position: fixed;
+  left: 100px;
+  z-index: 1;
+  top: 0;
+  right: 0;
+
+  input {
+    width: 100%;
+    border: 0;
+    padding: 2rem;
+    background-color: #202124;
+    font-size: 1.1rem;
+    color: #fff;
+    &:focus {
+      outline: none;
+      border: 0;
+    }
+  }
+}
