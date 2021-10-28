@@ -11,6 +11,7 @@ import { PopularMovie, TopRatedMovie, UpcomingMovie, NowPlayingMovie } from './c
 import { PopularTv, TvOnTheAir, TopRatedTv, TvAiringToday } from './components/TvShow/Category/Category';
 import { Search } from './components/Search/Search';
 import { Tv } from './components/TvShow/Tv';
+import { NotFound } from './components/404/NotFound';
 
 function App() {
   return (
@@ -23,6 +24,9 @@ function App() {
             </PrivateRoute>
             <Route path="/login">
               <Auth />
+            </Route>
+            <Route path="*">
+              <NotFound />
             </Route>
             <Route path="/register">
               <Auth />
