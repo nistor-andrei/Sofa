@@ -8,9 +8,11 @@ export function FormSearch({ closeSearch }) {
 
   async function handleChange(e) {
     setInput(e.target.value);
-    if (input) {
-      const data = await search(input);
+    try {
+    const data = await search(input);
       setTimeout(setMovies(data), 1000);
+    } catch(error) {
+      setMovies("Movies not found")
     }
   }
 
