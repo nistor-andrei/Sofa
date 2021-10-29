@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { search } from "../api/api";
 import styles from "./formsearch.module.scss";
 
@@ -8,15 +8,14 @@ export function FormSearch({ closeSearch }) {
 
   async function handleChange(e) {
     setInput(e.target.value);
-    try {
-    const data = await search(input);
-      setTimeout(setMovies(data), 1000);
-    } catch(error) {
-      setMovies("Movies not found")
-    }
+
+    // if (input) {
+    //   const data = await search(input);
+    //   setTimeout(setMovies(data), 1000);
+    // }
   }
 
-  console.log(movies, input);
+  console.log(input);
   return (
     <div className={styles.form}>
       <form>

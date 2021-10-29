@@ -1,5 +1,9 @@
-import { Nav } from '../Nav/Nav';
+import { Nav } from "../Nav/Nav";
 
 export function Search() {
-  return <Nav />;
+  return (
+    <>
+      <Nav />
+    </>
+  );
 }

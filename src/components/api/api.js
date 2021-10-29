@@ -34,6 +34,13 @@ export function getPopular(type, source = "movie") {
   return fetch(`https://api.themoviedb.org/3/${source}/${type}?api_key=${apiKey}&language=en-US&page=1`).then((res) => res.json());
 }
 
-export function search(query) {
-  return fetch(`https://api.themoviedb.org/3/search/multi?api_key=${apiKey}&language=en-US&query=${query}&page=1`).then((res) => res.json);
+export async function search(query) {
+  try {
+    const data = await fetch(`https://api.themoviedb.org/3/search/multi?api_key=${apiKey}&language=en-US&query=${query}&page=1`).then((res) =>
+      res.json()
+    );
+    return data;
+  } catch (e) {
+    return console.log(e);
+  }
 }
