@@ -1,14 +1,20 @@
-import { useState } from 'react';
-import styles from './formsearch.module.scss';
+import { useEffect, useState } from "react";
+import { search } from "../api/api";
+import styles from "./formsearch.module.scss";
 
 export function FormSearch({ closeSearch }) {
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState("");
+  const [movies, setMovies] = useState(null);
 
-  function handleChange(e) {
+  async function handleChange(e) {
     setInput(e.target.value);
+    if (input) {
+      const data = await search(input);
+      setTimeout(setMovies(data), 1000);
+    }
   }
 
-  console.log(input);
+  console.log(movies, input);
   return (
     <div className={styles.form}>
       <form>
