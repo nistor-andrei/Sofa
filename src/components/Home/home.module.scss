@@ -1,4 +1,4 @@
-@import "../../sass/variables";
+@import '../../sass/variables';
 
 body {
   background-color: #141414;
@@ -16,7 +16,7 @@ h1 {
     position: relative;
     width: 100%;
     &::after {
-      content: "";
+      content: '';
       background: linear-gradient(90deg, #000 0, transparent 50%, transparent);
       position: absolute;
       inset: 0;
@@ -60,6 +60,7 @@ h1 {
 .star {
   img {
     margin-right: 0.3rem;
+    width: 15px;
   }
 }
 

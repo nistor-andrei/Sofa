@@ -4,12 +4,8 @@ import tv from '../../assets/icons/XMLID_1988_.svg';
 import search from '../../assets/icons/loupe.svg';
 import styles from './nav.module.scss';
 import { NavLink } from 'react-router-dom';
-import { FormSearch } from '../feature/FormSearch';
-import { useState } from 'react';
 
 export function Nav() {
-  const [openSearch, setOpenSearch] = useState(false);
-
   return (
     <>
       <nav className={styles.nav}>
@@ -30,22 +26,15 @@ export function Nav() {
             </NavLink>
           </li>
           <li>
-            <a
-              href="/search"
-              onClick={(e) => {
-                e.preventDefault();
-                setOpenSearch(!openSearch);
-              }}
-            >
+            <NavLink to="/search">
               <img src={search} alt="search" />
-            </a>
+            </NavLink>
           </li>
           <li>
             <p>Admin</p>
           </li>
         </ul>
       </nav>
-      {openSearch && <FormSearch closeSearch={openSearch} />}
     </>
   );
 }
