@@ -6,6 +6,7 @@ import SwiperCore, { Navigation } from "swiper";
 import "swiper/swiper-bundle.min.css";
 import "swiper/swiper.min.css";
 import star from "../../assets/icons/star-solid.svg";
+import { Link } from "react-router-dom";
 
 export function Slide({ type, source, title, children }) {
   const [trending, setTrending] = useState(null);
@@ -32,12 +33,14 @@ export function Slide({ type, source, title, children }) {
           {trending.results?.map((trend) => {
             return (
               <SwiperSlide tag="li" className={styles.card} key={trend.id}>
-                <img src={`https://image.tmdb.org/t/p/w370_and_h556_bestv2/${trend?.poster_path}`} alt={trend.original_title} />
-                <h3 className={styles.title}>{trend.original_title || trend.name}</h3>
-                <span className={styles.cardStar}>
-                  <img src={star} alt="star" />
-                  {trend.vote_average}
-                </span>
+                <Link to={source + "/" + trend.id}>
+                  <img src={`https://image.tmdb.org/t/p/w370_and_h556_bestv2/${trend?.poster_path}`} alt={trend.original_title} />
+                  <h3 className={styles.title}>{trend.original_title || trend.name}</h3>
+                  <span className={styles.cardStar}>
+                    <img src={star} alt="star" />
+                    {trend.vote_average}
+                  </span>
+                </Link>
               </SwiperSlide>
             );
           })}
