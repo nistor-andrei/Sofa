@@ -1,25 +1,25 @@
-import { Nav } from "../Nav/Nav";
-import { FormSearch } from "../feature/FormSearch";
-import { useState } from "react";
-import { search, imageUrl } from "../api/api";
-import styles from "./search.module.scss";
-import placeholder from "../../assets/image/Group 3406.png";
-import star from "../../assets/icons/star-solid.svg";
-import InfiniteScroll from "react-infinite-scroll-component";
-import { useEffect } from "react";
+import { Nav } from '../Nav/Nav';
+import { FormSearch } from '../feature/FormSearch';
+import { useState } from 'react';
+import { search, imageUrl } from '../api/api';
+import styles from './search.module.scss';
+import placeholder from '../../assets/image/Group 3406.png';
+import star from '../../assets/icons/star-solid.svg';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import { useEffect } from 'react';
 
 export function Search() {
   const [page, setPage] = useState(1);
   const [hasMore, sethasMore] = useState(true);
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState('');
   const [movies, setMovies] = useState([]);
 
   async function handleChange(e) {
-    setInput(e.target.value);
+    e?.preventDefault();
+    setInput(e?.target.value);
 
     if (input) {
       const data = await search(input, page);
-      console.log(data);
       setPage((prev) => prev + 1);
       setTimeout(setMovies([...movies, ...data.results]), 2000);
       if (data.results.length === 0 || data.results.length < 20) {
@@ -30,15 +30,13 @@ export function Search() {
 
   useEffect(() => {
     handleChange();
-  });
-
-  console.log(movies);
+  }, []);
 
   return (
     <>
       <Nav />
       <main className={styles.search}>
-        <FormSearch change={handleChange} value={input} />
+        <FormSearch change={handleChange} input={input} />
         <section className={styles.results}>
           <h2>Search result for {input}</h2>
           <ul>
@@ -51,19 +49,13 @@ export function Search() {
               className={styles.grid}
             >
               {movies &&
-                movies.results.map((movie) => {
+                movies.map((movie) => {
                   return (
                     <li key={movie.id}>
                       {movie.poster_path ? (
-                        <img
-                          src={!movie.poster_path ? placeholder : imageUrl("w370_and_h556_bestv2") + movie.poster_path}
-                          alt={movie.original_title}
-                        />
+                        <img src={!movie.poster_path ? placeholder : imageUrl('w370_and_h556_bestv2') + movie.poster_path} alt={movie.original_title} />
                       ) : (
-                        <img
-                          src={!movie.profile_path ? placeholder : imageUrl("w370_and_h556_bestv2") + movie.profile_path}
-                          alt={movie.original_title}
-                        />
+                        <img src={!movie.profile_path ? placeholder : imageUrl('w370_and_h556_bestv2') + movie.profile_path} alt={movie.original_title} />
                       )}
                       <h3>{movie.original_title || movie.original_name || movie.name}</h3>
                       {(movie.vote_average || movie.vote_average > 0) && (
