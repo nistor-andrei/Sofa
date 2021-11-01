@@ -1,8 +1,14 @@
-.search {
-  h2 {
-  }
-}
-
 .results {
   margin: 5rem;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  color: #fff;
+  .star {
+    width: 15px;
+    margin-right: 3px;
+  }
 }
