@@ -4,7 +4,7 @@ const random = (max, min = 0) => {
   return Math.floor(Math.random() * (max - min) + min);
 };
 
-export function getMovie(mediaType) {
+export function getMovieRandom(mediaType) {
   const data = fetch(`https://api.themoviedb.org/3/trending/${mediaType}/week?api_key=${apiKey}`)
     .then((res) => res.json())
     .then(async (data) => {
@@ -45,4 +45,9 @@ export async function search(query, page) {
   } catch (e) {
     return console.log(e);
   }
+}
+
+export async function getMovie(mediaType, id) {
+  const data = await fetch(`https://api.themoviedb.org/3/${mediaType}/${id}?api_key=${apiKey}&language=en-US`).then((res) => res.json());
+  return data;
 }

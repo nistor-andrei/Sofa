@@ -1,17 +1,17 @@
-import { Nav } from '../Nav/Nav';
-import { FormSearch } from '../feature/FormSearch';
-import { useState } from 'react';
-import { search, imageUrl } from '../api/api';
-import styles from './search.module.scss';
-import placeholder from '../../assets/image/Group 3406.png';
-import star from '../../assets/icons/star-solid.svg';
-import InfiniteScroll from 'react-infinite-scroll-component';
-import { useEffect } from 'react';
+import { Nav } from "../Nav/Nav";
+import { FormSearch } from "../feature/FormSearch";
+import { useState } from "react";
+import { search, imageUrl } from "../api/api";
+import styles from "./search.module.scss";
+import placeholder from "../../assets/image/Group 3406.png";
+import star from "../../assets/icons/star-solid.svg";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { useEffect } from "react";
 
 export function Search() {
   const [page, setPage] = useState(1);
   const [hasMore, sethasMore] = useState(true);
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState("");
   const [movies, setMovies] = useState([]);
 
   async function handleChange(e) {
@@ -29,8 +29,8 @@ export function Search() {
   }
 
   useEffect(() => {
-    handleChange();
-  }, []);
+    handleChange(); // eslint-disable-next-line
+  }, [input, movies]);
 
   return (
     <>
@@ -53,9 +53,15 @@ export function Search() {
                   return (
                     <li key={movie.id}>
                       {movie.poster_path ? (
-                        <img src={!movie.poster_path ? placeholder : imageUrl('w370_and_h556_bestv2') + movie.poster_path} alt={movie.original_title} />
+                        <img
+                          src={!movie.poster_path ? placeholder : imageUrl("w370_and_h556_bestv2") + movie.poster_path}
+                          alt={movie.original_title}
+                        />
                       ) : (
-                        <img src={!movie.profile_path ? placeholder : imageUrl('w370_and_h556_bestv2') + movie.profile_path} alt={movie.original_title} />
+                        <img
+                          src={!movie.profile_path ? placeholder : imageUrl("w370_and_h556_bestv2") + movie.profile_path}
+                          alt={movie.original_title}
+                        />
                       )}
                       <h3>{movie.original_title || movie.original_name || movie.name}</h3>
                       {(movie.vote_average || movie.vote_average > 0) && (

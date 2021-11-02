@@ -1,4 +1,4 @@
-import styles from './formsearch.module.scss';
+import styles from "./formsearch.module.scss";
 
 export function FormSearch({ change, input }) {
   console.log(input);

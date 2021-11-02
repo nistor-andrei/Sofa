@@ -9,6 +9,7 @@ import { TrendingTvShow } from "./components/TvShow/Category/Trending/Trending";
 import { Movie } from "./components/Movie/Movie";
 import { PopularMovie, TopRatedMovie, UpcomingMovie, NowPlayingMovie } from "./components/Movie/Category/Category";
 import { PopularTv, TvOnTheAir, TopRatedTv, TvAiringToday } from "./components/TvShow/Category/Category";
+import { MovieDetails } from "./components/Movie/MovieDetails";
 import { Search } from "./components/Search/Search";
 import { Tv } from "./components/TvShow/Tv";
 import { NotFound } from "./components/404/NotFound";
@@ -31,6 +32,9 @@ function App() {
             </Route>
             <PrivateRoute exact path="/movie">
               <Movie />
+            </PrivateRoute>
+            <PrivateRoute exact path="/movie/:id">
+              <MovieDetails />
             </PrivateRoute>
             <PrivateRoute exact path="/movie/category/popular">
               <PopularMovie />

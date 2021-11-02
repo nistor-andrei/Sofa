@@ -1,19 +1,18 @@
-import { getMovieRandom } from "../api/api";
+import { getMovie } from "../api/api";
 import { useEffect, useState } from "react";
 import styles from "../Home/home.module.scss";
 import star from "../../assets/icons/star-solid.svg";
-import { Link } from "react-router-dom";
 
-export function Hero({ mediaType }) {
+export function HeroDetails({ mediaType, id }) {
   const [movie, setMovie] = useState({});
   useEffect(() => {
     async function detail() {
-      const dataMovie = await getMovieRandom(mediaType);
+      const dataMovie = await getMovie(mediaType, id);
 
       setMovie(dataMovie);
     }
     detail();
-  }, [mediaType]);
+  }, [mediaType, id]);
 
   if (!movie) {
     return <h2>Loading</h2>;
@@ -37,9 +36,7 @@ export function Hero({ mediaType }) {
     <>
       <div className={`${styles.hero} hero`}>
         <div className={styles.panel}>
-          <Link to={mediaType + "/" + movie.id}>
-            <h2>{movie.original_title || movie.name}</h2>
-          </Link>
+          <h2>{movie.original_title || movie.name}</h2>
           <div className={styles.details}>
             <span className={styles.star}>
               <img src={star} alt="review" />
