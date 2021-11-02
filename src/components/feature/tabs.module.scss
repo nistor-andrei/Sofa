@@ -1,3 +1,5 @@
+@import '../../sass/variables';
+
 .active {
   color: #fff;
   border-bottom: 2px solid #fff;
@@ -24,6 +26,7 @@
 .infoRight {
   color: #fff;
   line-height: 1.3;
+  width: 100%;
   > p {
     margin-bottom: 3rem;
     max-width: 100ch;
@@ -51,4 +54,17 @@
   max-width: 100px;
   width: 100%;
   margin-right: 10px;
+}
+
+.tabsContent {
+  li:last-child {
+    margin-top: 2rem;
+    a {
+      margin-right: 1rem;
+
+      &:hover {
+        filter: invert(50%) sepia(88%) saturate(1151%) hue-rotate(184deg) brightness(90%) contrast(88%);
+      }
+    }
+  }
 }
