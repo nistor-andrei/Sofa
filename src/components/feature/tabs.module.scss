@@ -23,14 +23,19 @@
 
 .infoRight {
   color: #fff;
-  max-width: 1000px;
   line-height: 1.3;
   > p {
     margin-bottom: 3rem;
+    max-width: 100ch;
   }
 
   ul li {
     display: flex;
+    width: 100%;
+    margin-bottom: 10px;
+    a {
+      color: #fff;
+    }
   }
 }
 
@@ -40,4 +45,10 @@
     width: 100%;
     height: 100%;
   }
+}
+
+.titleDetails {
+  max-width: 100px;
+  width: 100%;
+  margin-right: 10px;
 }
