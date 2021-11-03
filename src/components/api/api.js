@@ -1,5 +1,5 @@
 const apiKey = process.env.REACT_APP_KEY;
-
+const youtubeKey = process.env.REACT_APP_KEY_YOUTUBE;
 const random = (max, min = 0) => {
   return Math.floor(Math.random() * (max - min) + min);
 };
@@ -72,3 +72,20 @@ export async function getRecommandations(mediaType, id) {
 export const youtubeThumbnail = (key) => {
   return `https://img.youtube.com/vi/${key}/mqdefault.jpg`;
 };
+export const youtubeFullScreen = (key) => {
+  return `https://www.youtube.com/embed/${key}?rel=0&showinfo=0&autoplay=1`;
+};
+
+export const youtubeWatch = (key) => {
+  return `https://youtube.com/watch?v=${key}`;
+};
+
+export async function getDurationVideo(id) {
+  const data = await fetch(`https://www.googleapis.com/youtube/v3/videos?part=contentDetails&id=${id}&key=${youtubeKey}`).then((res) => res.json());
+  return data.items[0].contentDetails.duration;
+}
+
+export async function getVideo(mediaType, id) {
+  const data = fetch(`https://api.themoviedb.org/3/${mediaType}/${id}/videos?api_key=${apiKey}&language=en-US`).then((res) => res.json());
+  return data;
+}

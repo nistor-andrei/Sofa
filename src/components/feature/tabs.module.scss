@@ -72,3 +72,48 @@
 .sliders {
   margin-left: 5rem;
 }
+
+.videoGrid {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 5rem;
+  color: #fff;
+
+  img {
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
+.gridItem {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  width: 100%;
+
+  @media (min-width: 640px) {
+    width: 50%;
+  }
+  @media (min-width: 1024px) {
+    width: 33%;
+  }
+  @media (min-width: 1450px) {
+    width: 25%;
+  }
+  @media (min-width: 2000px) {
+    width: 20%;
+  }
+  p {
+    margin-top: 1rem;
+  }
+  .img {
+    position: relative;
+  }
+  span {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 0.5rem;
+  }
+}

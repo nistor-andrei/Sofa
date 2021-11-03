@@ -22,7 +22,6 @@ export function SlideRecommand({ mediaType, id, title }) {
   if (!recommand) {
     return <h2>Loading ...</h2>;
   }
-  console.log(recommand);
   return (
     <article className={styles.articleCast}>
       <div className={styles.trend}>
