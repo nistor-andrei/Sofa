@@ -26,19 +26,21 @@ export const imageUrl = function (dimension) {
   return `https://image.tmdb.org/t/p/${dimension}/`;
 };
 
-export async function getAllTrending(type, page, endpoint = 'movie', day = 'week') {
+export async function getAllTrending(type, page, endpoint = "movie", day = "week") {
   let res = await fetch(`https://api.themoviedb.org/3/${endpoint}/${type}/${day}?api_key=${apiKey}&page=${page}`);
   let data = await res.json();
   return data;
 }
 
-export function getPopular(type, source = 'movie') {
+export function getPopular(type, source = "movie") {
   return fetch(`https://api.themoviedb.org/3/${source}/${type}?api_key=${apiKey}&language=en-US&page=1`).then((res) => res.json());
 }
 
 export async function search(query, page) {
   try {
-    const data = await fetch(`https://api.themoviedb.org/3/search/multi?api_key=${apiKey}&language=en-US&query=${query}&page=${page}`).then((res) => res.json());
+    const data = await fetch(`https://api.themoviedb.org/3/search/multi?api_key=${apiKey}&language=en-US&query=${query}&page=${page}`).then((res) =>
+      res.json()
+    );
     return data;
   } catch (e) {
     return console.log(e);
@@ -54,3 +56,19 @@ export async function getExternalLinks(mediaType, id) {
   const data = await fetch(`https://api.themoviedb.org/3/${mediaType}/${id}/external_ids?api_key=${apiKey}`).then((res) => res.json());
   return data;
 }
+
+export async function getCredits(mediaType, id) {
+  const data = await fetch(`https://api.themoviedb.org/3/${mediaType}/${id}/credits?api_key=${apiKey}`).then((res) => res.json());
+  return data;
+}
+
+export async function getRecommandations(mediaType, id) {
+  const data = await fetch(`https://api.themoviedb.org/3/${mediaType}/${id}/recommendations?api_key=${apiKey}&language=en-US&page=1`).then((res) =>
+    res.json()
+  );
+  return data;
+}
+
+export const youtubeThumbnail = (key) => {
+  return `https://img.youtube.com/vi/${key}/mqdefault.jpg`;
+};

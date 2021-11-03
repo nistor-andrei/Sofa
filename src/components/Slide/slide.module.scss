@@ -10,6 +10,13 @@ main {
   }
 }
 
+.articleCast {
+  h3 {
+    font-size: 1.7rem;
+    color: #fff;
+  }
+}
+
 .trend {
   display: flex;
   margin-bottom: 2rem;
@@ -38,5 +45,26 @@ main {
   img {
     margin-right: 0.5rem;
     width: 15px;
+  }
+}
+
+.actorName {
+  margin-top: 0.7rem;
+  color: #fff;
+}
+
+.actorChar {
+  color: #62676a;
+  margin: 0.5rem 0;
+}
+
+.star {
+  width: 15px;
+  margin-right: 0.25rem;
+}
+
+.card {
+  span {
+    color: #fff;
   }
 }

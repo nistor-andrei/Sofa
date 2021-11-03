@@ -1,4 +1,4 @@
-@import '../../sass/variables';
+@import "../../sass/variables";
 
 .active {
   color: #fff;
@@ -67,4 +67,8 @@
       }
     }
   }
+}
+
+.sliders {
+  margin-left: 5rem;
 }
