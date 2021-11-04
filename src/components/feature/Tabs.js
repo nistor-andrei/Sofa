@@ -16,7 +16,7 @@ export function Tabs() {
           Videos
         </li>
         <li className={activeTab === "tab3" ? styles.active : ""} onClick={() => setActiveTab("tab3")}>
-          Photo
+          Photos
         </li>
       </ul>
       <div className="outlet">

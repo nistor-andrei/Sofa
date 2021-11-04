@@ -55,12 +55,15 @@ export function Overview() {
               <p className={styles.titleDetails}> Runtime</p>
               <p>{timeConvert(overview.runtime)}</p>
             </li>
-            {budget !== 0 && (
-              <li>
-                <p className={styles.titleDetails}> Budget</p>
-                <p>${budget}</p>
-              </li>
-            )}
+            {
+              // eslint-disable-next-line
+              budget != 0 && (
+                <li>
+                  <p className={styles.titleDetails}> Budget</p>
+                  <p>${budget}</p>
+                </li>
+              )
+            }
             <li>
               <p className={styles.titleDetails}> Genre</p>
               {gen?.map((el) => {

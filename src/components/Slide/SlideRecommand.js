@@ -31,7 +31,7 @@ export function SlideRecommand({ mediaType, id, title }) {
         {recommand.results?.map((recommand) => {
           return (
             <SwiperSlide tag="li" className={styles.card} key={recommand.id}>
-              <Link to={"person/" + recommand.id}>
+              <Link to={"" + recommand.id}>
                 <img src={`https://image.tmdb.org/t/p/w370_and_h556_bestv2/${recommand?.poster_path}`} alt={recommand.original_title} />
                 <p className={styles.actorName}>{recommand.original_title}</p>
                 <span>

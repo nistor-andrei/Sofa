@@ -23,7 +23,7 @@ export function getTrending(type) {
 }
 
 export const imageUrl = function (dimension) {
-  return `https://image.tmdb.org/t/p/${dimension}/`;
+  return `https://image.tmdb.org/t/p/${dimension}`;
 };
 
 export async function getAllTrending(type, page, endpoint = "movie", day = "week") {
@@ -49,6 +49,11 @@ export async function search(query, page) {
 
 export async function getMovie(mediaType, id) {
   const data = await fetch(`https://api.themoviedb.org/3/${mediaType}/${id}?api_key=${apiKey}&language=en-US`).then((res) => res.json());
+  return data;
+}
+
+export async function getMoviesImages(mediaType, id) {
+  const data = await fetch(`https://api.themoviedb.org/3/${mediaType}/${id}/images?api_key=${apiKey}`).then((res) => res.json());
   return data;
 }
 

@@ -6,6 +6,7 @@ import SwiperCore, { Navigation } from "swiper";
 import "swiper/swiper-bundle.min.css";
 import "swiper/swiper.min.css";
 import { Link } from "react-router-dom";
+import placeholder from "../../assets/image/Group 3406.png";
 
 export function SlideCast({ id, title, mediaType }) {
   const [actors, setActors] = useState(null);
@@ -31,7 +32,12 @@ export function SlideCast({ id, title, mediaType }) {
           return (
             <SwiperSlide tag="li" className={styles.card} key={actors.id}>
               <Link to={"person/" + actors.id}>
-                <img src={`https://image.tmdb.org/t/p/w370_and_h556_bestv2/${actors?.profile_path}`} alt={actors.original_name} />
+                {
+                  <img
+                    src={actors.profile_path ? `https://image.tmdb.org/t/p/w370_and_h556_bestv2/${actors?.profile_path}` : placeholder}
+                    alt={actors.original_name}
+                  />
+                }
                 <p className={styles.actorName}>{actors.name}</p>
                 <p className={styles.actorChar}>{actors.character}</p>
               </Link>

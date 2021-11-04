@@ -79,9 +79,10 @@
   margin: 5rem;
   color: #fff;
 
-  img {
+  .thumbnail {
     width: 100%;
     object-fit: cover;
+    opacity: 0.8;
   }
 }
 
@@ -116,4 +117,19 @@
     background-color: rgba(0, 0, 0, 0.6);
     padding: 0.5rem;
   }
+
+  svg {
+    position: absolute;
+    width: 30px;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+  }
+}
+
+.gridPhoto {
+  display: flex;
+  flex-wrap: wrap;
 }

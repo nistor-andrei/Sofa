@@ -58,13 +58,12 @@ main {
   margin: 0.5rem 0;
 }
 
-.star {
-  width: 15px;
-  margin-right: 0.25rem;
-}
-
 .card {
   span {
     color: #fff;
+  }
+  .star {
+    width: 15px;
+    margin-right: 0.25rem;
   }
 }
