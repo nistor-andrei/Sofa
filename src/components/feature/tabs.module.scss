@@ -1,4 +1,4 @@
-@import "../../sass/variables";
+@import '../../sass/variables';
 
 .active {
   color: #fff;
@@ -106,6 +106,12 @@
   }
   p {
     margin-top: 1rem;
+  }
+  a {
+    display: block;
+    img {
+      width: 100%;
+    }
   }
   .img {
     position: relative;
