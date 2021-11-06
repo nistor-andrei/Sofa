@@ -3,14 +3,14 @@ import { Tabs } from '../feature/Tabs';
 import { HeroDetails } from '../Hero/HeroDetails';
 import { Nav } from '../Nav/Nav';
 
-export function MovieDetails() {
+export function TvDetails() {
   const { id } = useParams();
   return (
     <>
       <Nav />
-      <HeroDetails mediaType="movie" id={id} />
+      <HeroDetails mediaType="tv" id={id} />
       <main>
-        <Tabs mediaType="movie" />
+        <Tabs mediaType="tv" />
       </main>
     </>
   );

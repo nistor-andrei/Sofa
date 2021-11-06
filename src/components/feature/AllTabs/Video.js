@@ -1,13 +1,13 @@
-import { useState } from "react";
-import { useParams } from "react-router";
-import { useEffect } from "react";
-import { getVideo, youtubeThumbnail } from "../../api/api";
-import styles from "../tabs.module.scss";
-import { SlideRecommand } from "../../Slide/SlideRecommand";
-import { Footer } from "../../Footer/Footer";
-import { Modal } from "../Modal/Modal";
+import { useState } from 'react';
+import { useParams } from 'react-router';
+import { useEffect } from 'react';
+import { getVideo, youtubeThumbnail } from '../../api/api';
+import styles from '../tabs.module.scss';
+import { SlideRecommand } from '../../Slide/SlideRecommand';
+import { Footer } from '../../Footer/Footer';
+import { Modal } from '../Modal/Modal';
 
-export function Video() {
+export function Video({ media }) {
   const [videos, setVideos] = useState();
   const { id } = useParams();
   const [modal, setModal] = useState(false);
@@ -15,18 +15,17 @@ export function Video() {
 
   useEffect(() => {
     async function getData() {
-      const data = await getVideo("movie", id);
+      const data = await getVideo(media, id);
 
       setVideos(data);
     }
 
     getData();
-  }, [id]);
+  }, [id, media]);
 
   if (!videos) {
     return <h2>Loading...</h2>;
   }
-  console.log(key);
   return (
     <>
       <Modal isOpen={modal} close={setModal} id={key} />;
@@ -64,7 +63,7 @@ export function Video() {
         })}
       </main>
       <section className="allMargin">
-        <SlideRecommand mediaType="movie" id={id} title="More like this" />
+        <SlideRecommand mediaType={media} id={id} title="More like this" />
       </section>
       <Footer />
     </>

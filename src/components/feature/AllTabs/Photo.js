@@ -6,7 +6,7 @@ import { SlideRecommand } from '../../Slide/SlideRecommand';
 import styles from '../tabs.module.scss';
 import { ModalPhoto } from '../Modal/ModalPhoto';
 
-export function Photo() {
+export function Photo({ media }) {
   const { id } = useParams();
   const [photos, setPhotos] = useState(null);
   const [imageId, setImageId] = useState('');
@@ -14,11 +14,11 @@ export function Photo() {
 
   useEffect(() => {
     async function getData() {
-      const data = await getMoviesImages('movie', id);
+      const data = await getMoviesImages(media, id);
       setPhotos(data);
     }
     getData();
-  }, [id]);
+  }, [id, media]);
   if (!photos) return <h2>Loading</h2>;
 
   console.log(photos.posters[0]);
@@ -70,7 +70,7 @@ export function Photo() {
           })}
         </div>
         <section className={styles.distance}>
-          <SlideRecommand title="More Like This" id={id} mediaType="movie" />
+          <SlideRecommand title="More Like This" id={id} mediaType={media} />
         </section>
         <section className={styles.distance}>
           <Footer />
