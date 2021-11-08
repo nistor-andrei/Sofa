@@ -1,11 +1,11 @@
-import { Nav } from '../Nav/Nav';
-import { FormSearch } from '../feature/FormSearch';
-import { useState } from 'react';
-import { search, imageUrl } from '../api/api';
-import styles from './search.module.scss';
-import placeholder from '../../assets/image/Group 3406.png';
-import star from '../../assets/icons/star-solid.svg';
-import InfiniteScroll from 'react-infinite-scroll-component';
+import { Nav } from "../Nav/Nav";
+import { FormSearch } from "../feature/FormSearch";
+import { useState } from "react";
+import { search, imageUrl } from "../api/api";
+import styles from "./search.module.scss";
+import placeholder from "../../assets/image/Group 3406.png";
+import star from "../../assets/icons/star-solid.svg";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 export function Search() {
   const [page, setPage] = useState(1);
@@ -14,7 +14,7 @@ export function Search() {
   const [movies, setMovies] = useState([]);
 
   async function handleChange(e) {
-    e.preventDefault();
+    e?.preventDefault();
     setInput(e.target.value);
 
     if (!e.target.value) setMovies([]);
@@ -48,9 +48,15 @@ export function Search() {
                   return (
                     <li key={movie.id}>
                       {movie.poster_path ? (
-                        <img src={!movie.poster_path ? placeholder : imageUrl('w370_and_h556_bestv2') + movie.poster_path} alt={movie.original_title} />
+                        <img
+                          src={!movie.poster_path ? placeholder : imageUrl("w370_and_h556_bestv2") + movie.poster_path}
+                          alt={movie.original_title}
+                        />
                       ) : (
-                        <img src={!movie.profile_path ? placeholder : imageUrl('w370_and_h556_bestv2') + movie.profile_path} alt={movie.original_title} />
+                        <img
+                          src={!movie.profile_path ? placeholder : imageUrl("w370_and_h556_bestv2") + movie.profile_path}
+                          alt={movie.original_title}
+                        />
                       )}
                       <h3>{movie.original_title || movie.original_name || movie.name}</h3>
                       {(movie.vote_average || movie.vote_average > 0) && (

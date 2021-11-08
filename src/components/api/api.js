@@ -91,6 +91,11 @@ export async function getDurationVideo(id) {
 }
 
 export async function getVideo(mediaType, id) {
-  const data = fetch(`https://api.themoviedb.org/3/${mediaType}/${id}/videos?api_key=${apiKey}&language=en-US`).then((res) => res.json());
+  const data = await fetch(`https://api.themoviedb.org/3/${mediaType}/${id}/videos?api_key=${apiKey}&language=en-US`).then((res) => res.json());
+  return data;
+}
+
+export async function getPerson(id) {
+  const data = await fetch(`https://api.themoviedb.org/3/person/${id}?api_key=${apiKey}&language=en-US`).then((res) => res.json());
   return data;
 }

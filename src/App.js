@@ -1,19 +1,20 @@
-import './App.scss';
-import { Auth } from './components/Auth/Auth';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { Home } from './components/Home/Home';
-import { PrivateRoute } from './components/routes/PrivateRoute';
-import { AuthContextProvider } from './components/Auth/AuthContext.context';
-import { TrendingMovie } from './components/Movie/Category/Trending';
-import { TrendingTvShow } from './components/TvShow/Category/Trending/Trending';
-import { Movie } from './components/Movie/Movie';
-import { PopularMovie, TopRatedMovie, UpcomingMovie, NowPlayingMovie } from './components/Movie/Category/Category';
-import { PopularTv, TvOnTheAir, TopRatedTv, TvAiringToday } from './components/TvShow/Category/Category';
-import { MovieDetails } from './components/Movie/MovieDetails';
-import { Search } from './components/Search/Search';
-import { Tv } from './components/TvShow/Tv';
-import { NotFound } from './components/404/NotFound';
-import { TvDetails } from './components/TvShow/TvDetails';
+import "./App.scss";
+import { Auth } from "./components/Auth/Auth";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Home } from "./components/Home/Home";
+import { PrivateRoute } from "./components/routes/PrivateRoute";
+import { AuthContextProvider } from "./components/Auth/AuthContext.context";
+import { TrendingMovie } from "./components/Movie/Category/Trending";
+import { TrendingTvShow } from "./components/TvShow/Category/Trending/Trending";
+import { Movie } from "./components/Movie/Movie";
+import { PopularMovie, TopRatedMovie, UpcomingMovie, NowPlayingMovie } from "./components/Movie/Category/Category";
+import { PopularTv, TvOnTheAir, TopRatedTv, TvAiringToday } from "./components/TvShow/Category/Category";
+import { MovieDetails } from "./components/Movie/MovieDetails";
+import { Search } from "./components/Search/Search";
+import { Tv } from "./components/TvShow/Tv";
+import { NotFound } from "./components/404/NotFound";
+import { TvDetails } from "./components/TvShow/TvDetails";
+import { Person } from "./components/Person/Person";
 
 function App() {
   return (
@@ -75,6 +76,9 @@ function App() {
             </PrivateRoute>
             <PrivateRoute exact path="/search">
               <Search />
+            </PrivateRoute>
+            <PrivateRoute exact path="/person/:id">
+              <Person />
             </PrivateRoute>
             <Route exact path="*">
               <NotFound />

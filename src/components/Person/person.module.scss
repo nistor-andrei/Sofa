@@ -1,0 +1,16 @@
+.personHero {
+  padding: 4rem;
+  display: flex;
+  gap: 5rem;
+  color: #fff;
+  p {
+    max-width: 100ch;
+    line-height: 25px;
+  }
+}
+
+.actorDetails {
+  p {
+    margin: 1rem 0;
+  }
+}
