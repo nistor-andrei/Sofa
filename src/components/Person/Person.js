@@ -32,7 +32,6 @@ export function Person() {
   if (!actor || !social) {
     return <h2>Loading...</h2>;
   }
-  console.log(social);
 
   const currentYear = new Date().getFullYear();
   const birth = actor.birthday.split("-").reverse().join(".");

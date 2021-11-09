@@ -23,8 +23,6 @@ export function Known() {
     return <h2>Loading...</h2>;
   }
 
-  console.log(credits);
-
   return (
     <ul className={styles.knowList}>
       {credits.cast.map((credit, index) => {

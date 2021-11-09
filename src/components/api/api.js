@@ -22,7 +22,7 @@ export function getTrending(type) {
   return fetch(`https://api.themoviedb.org/3/trending/${type}/week?api_key=${apiKey}&page=1`).then((res) => res.json());
 }
 
-export const imageUrl = function (dimension) {
+export const imageUrl = function (dimension = "w370_and_h556_bestv2") {
   return `https://image.tmdb.org/t/p/${dimension}`;
 };
 
@@ -107,5 +107,10 @@ export async function getSocialPerson(id) {
 
 export async function getCreditsCombined(id) {
   const data = await fetch(`https://api.themoviedb.org/3/person/${id}/combined_credits?api_key=${apiKey}&language=en-US`).then((res) => res.json());
+  return data;
+}
+
+export async function getPersonImage(id) {
+  const data = await fetch(`https://api.themoviedb.org/3/person/${id}/images?api_key=${apiKey}`).then((res) => res.json());
   return data;
 }
