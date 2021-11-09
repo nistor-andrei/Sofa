@@ -99,3 +99,13 @@ export async function getPerson(id) {
   const data = await fetch(`https://api.themoviedb.org/3/person/${id}?api_key=${apiKey}&language=en-US`).then((res) => res.json());
   return data;
 }
+
+export async function getSocialPerson(id) {
+  const data = await fetch(`https://api.themoviedb.org/3/person/${id}/external_ids?api_key=${apiKey}&language=en-US`).then((res) => res.json());
+  return data;
+}
+
+export async function getCreditsCombined(id) {
+  const data = await fetch(`https://api.themoviedb.org/3/person/${id}/combined_credits?api_key=${apiKey}&language=en-US`).then((res) => res.json());
+  return data;
+}

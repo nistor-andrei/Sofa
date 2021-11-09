@@ -1,5 +1,5 @@
 .personHero {
-  padding: 4rem;
+  padding: 3rem;
   display: flex;
   gap: 5rem;
   color: #fff;
@@ -7,10 +7,44 @@
     max-width: 100ch;
     line-height: 25px;
   }
+  img {
+    height: 100%;
+  }
 }
 
 .actorDetails {
   p {
     margin: 1rem 0;
   }
+}
+
+.list {
+  li {
+    display: flex;
+    width: 100%;
+    margin-bottom: 1rem;
+    :first-child {
+      max-width: 110px;
+      flex: 1;
+      margin-right: 1.25rem;
+    }
+    :last-child {
+      flex: 2;
+    }
+  }
+}
+
+.socialList {
+  display: flex;
+  li {
+    margin-right: 1rem;
+
+    a:hover {
+      filter: invert(50%) sepia(88%) saturate(1151%) hue-rotate(184deg) brightness(90%) contrast(88%);
+    }
+  }
+}
+
+.spaceAround {
+  padding: 0 4rem;
 }

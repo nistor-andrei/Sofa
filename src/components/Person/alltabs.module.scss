@@ -1,0 +1,62 @@
+.active {
+  color: #fff;
+  border-bottom: 2px solid #fff;
+}
+
+.tabs {
+  margin-top: 2rem;
+  display: flex;
+  color: #595954;
+  justify-content: center;
+  height: 2.5rem;
+  li {
+    cursor: pointer;
+    margin: 0 3rem;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+  }
+}
+
+.spaceAround {
+  padding: 4rem;
+}
+
+.knowList {
+  margin-top: 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  a {
+    color: #fff;
+  }
+
+  li {
+    margin: 0.5rem;
+    color: #fff;
+    @media (min-width: 640px) {
+      width: 25%;
+    }
+    @media (min-width: 1024px) {
+      width: 20%;
+    }
+    @media (min-width: 1500px) {
+      width: 16.6666667%;
+    }
+    @media (min-width: 1800px) {
+      width: 14.2857143%;
+    }
+    @media (min-width: 2500px) {
+      width: 12.5%;
+    }
+    img {
+      width: 100%;
+    }
+
+    p {
+      margin: 0.25rem 0;
+      img {
+        width: 15px;
+        margin-right: 0.25rem;
+      }
+    }
+  }
+}
