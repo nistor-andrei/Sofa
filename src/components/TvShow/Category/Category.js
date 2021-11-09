@@ -1,4 +1,4 @@
-import { ExploreAll } from '../../ExploreAll/ExploreAll';
+import { ExploreAll } from "../../ExploreAll/ExploreAll";
 
 export function PopularTv() {
   return <ExploreAll endpoint="tv" type="popular" mainTitle="Popular Tv Shows" day="" />;

@@ -1,5 +1,5 @@
-import { ExploreAll } from "../../ExploreAll/ExploreAll";
+import { ExploreAllHome } from "../../ExploreAll/ExploreAllHome";
 
 export function TrendingMovie() {
-  return <ExploreAll type="movie" mainTitle="Trending Movie" endpoint="trending" />;
+  return <ExploreAllHome type="movie" mainTitle="Trending movie" endpoint="trending" />;
 }

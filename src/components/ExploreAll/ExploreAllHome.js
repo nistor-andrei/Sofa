@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "./explore.module.scss";
 import { Footer } from "../Footer/Footer";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { getAllTrending } from "../api/api";
+import { getHomeTrending } from "../api/api";
 import { Nav } from "../Nav/Nav";
 import star from "../../assets/icons/star-solid.svg";
 import { Link } from "react-router-dom";
@@ -10,14 +10,14 @@ import { Link } from "react-router-dom";
 // Day will be empty anytime for non trending Movie or Tv Show
 // Exemple URL API: https://${url}/3/mediaType/endpoint?apikey=....
 
-export function ExploreAll({ type, mainTitle, endpoint, day }) {
+export function ExploreAllHome({ type, mainTitle, endpoint, day }) {
   console.log(type);
   const [page, setPage] = useState(1);
   const [movie, setMovie] = useState([]);
   const [hasMore, sethasMore] = useState(true);
 
   const fetchData = async () => {
-    const imageApi = await getAllTrending(type, page, endpoint, day);
+    const imageApi = await getHomeTrending(type, page, day);
     setPage((prev) => prev + 1);
     setMovie([...movie, ...imageApi.results]);
     if (imageApi.results.length === 0 || imageApi.results.length < 20) {
@@ -51,7 +51,7 @@ export function ExploreAll({ type, mainTitle, endpoint, day }) {
             >
               {movie?.map((image) => {
                 return (
-                  <Link to={type === "movie" ? `/${type}/${image.id}` : `/${endpoint}/${image.id}`}>
+                  <Link to={type === "movie" ? `/${type}/${image.id}` : `/${type}/${image.id}`}>
                     <li className={styles.gridItem} key={image.id}>
                       <img src={`https://image.tmdb.org/t/p/w370_and_h556_bestv2/${image.poster_path}`} alt={image.name} />
                       <p className={styles.title}>{image.original_title}</p>

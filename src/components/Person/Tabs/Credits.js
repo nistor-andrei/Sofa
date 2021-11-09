@@ -32,7 +32,6 @@ export function Credits() {
       return 0;
     });
   }
-  console.log(credits.cast);
   const ascendCredits = sortCredits(credits.cast);
   return (
     <>

@@ -32,6 +32,11 @@ export async function getAllTrending(type, page, endpoint = "movie", day = "week
   return data;
 }
 
+export async function getHomeTrending(type, page, endpoint = "trending", day = "week") {
+  let data = await fetch(`https://api.themoviedb.org/3/${endpoint}/${type}/${day}?api_key=${apiKey}&page=${page}`).then((res) => res.json());
+  return data;
+}
+
 export function getPopular(type, source = "movie") {
   return fetch(`https://api.themoviedb.org/3/${source}/${type}?api_key=${apiKey}&language=en-US&page=1`).then((res) => res.json());
 }
