@@ -1,14 +1,41 @@
 .profile {
   padding: 5rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 
   form {
     color: #fff;
     display: flex;
     flex-direction: column;
     width: 30%;
-    input {
-      padding: 0.7rem;
+    border: 0;
+    label {
       margin-bottom: 0.5rem;
     }
+    input {
+      padding: 0.7rem;
+      margin-bottom: 1rem;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}
+
+.sendButton {
+  cursor: pointer;
+  margin-top: 2rem;
+  background-color: #1976d2;
+  border: 0;
+  align-self: center;
+  color: #fff;
+  padding: 1rem 3rem;
+  font-size: 1rem;
+  border-radius: 3px;
+  font-weight: 600;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  &:hover {
+    background-color: #1363b3;
   }
 }

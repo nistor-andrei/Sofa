@@ -8,13 +8,14 @@ export function Profile() {
       <main>
         <section className={styles.profile}>
           <h2>Edit Profile</h2>
-          <form action="">
+          <form>
             <label htmlFor="name">Name</label>
             <input type="text" id="name" />
             <label htmlFor="email">Email</label>
             <input type="email" id="email" />
             <label htmlFor="pass">Password</label>
             <input type="password" id="pass" />
+            <button className={styles.sendButton}>Edit</button>
           </form>
         </section>
       </main>
