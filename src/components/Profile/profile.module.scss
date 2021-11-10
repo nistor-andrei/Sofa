@@ -1,0 +1,14 @@
+.profile {
+  padding: 5rem;
+
+  form {
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    input {
+      padding: 0.7rem;
+      margin-bottom: 0.5rem;
+    }
+  }
+}

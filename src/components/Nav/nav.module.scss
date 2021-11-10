@@ -14,19 +14,58 @@
   height: 100%;
   margin-top: 2rem;
 
-  img {
+  img:not(.user) {
     filter: brightness(0) invert(1);
   }
 
   li {
     margin-bottom: 5rem;
 
-    a {
+    a:not(.popoverItem) {
       padding: 2rem;
     }
   }
 
   :last-child {
     margin-top: auto;
+  }
+}
+
+.user {
+  border-radius: 50%;
+  width: 45px;
+}
+
+.accountButton {
+  background-color: transparent;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  position: relative;
+}
+
+.popover {
+  background-color: #fff;
+  border-radius: 4px;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  min-width: 100px;
+  max-width: 150px;
+  height: 100%;
+  top: 0;
+  font-family: "Roboto", sans-serif;
+
+  .popoverItem {
+    color: #000;
+    margin-top: 0;
+    font-size: 1rem;
+
+    &:hover {
+      -webkit-text-decoration: none;
+      text-decoration: none;
+      background-color: rgba(0, 0, 0, 0.04);
+    }
   }
 }

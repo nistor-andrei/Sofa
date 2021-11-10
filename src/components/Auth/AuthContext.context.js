@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
-import { useState } from 'react';
+import React, { useContext } from "react";
+import { useState } from "react";
 
 export const AuthContext = React.createContext(null);
 
 function loadFromStorage() {
-  const data = localStorage.getItem('auth');
+  const data = localStorage.getItem("auth");
 
   if (data) {
     return JSON.parse(data);
@@ -17,12 +17,12 @@ export function AuthContextProvider({ children }) {
   const [auth, setAuth] = useState(loadFromStorage);
 
   function login(data) {
-    localStorage.setItem('auth', JSON.stringify(data));
+    localStorage.setItem("auth", JSON.stringify(data));
     setAuth(data);
   }
 
   function logout() {
-    localStorage.removeItem('auth');
+    localStorage.removeItem("auth");
     setAuth(null);
   }
 
@@ -33,7 +33,7 @@ export function useAuth() {
   const value = useContext(AuthContext);
 
   if (value === null) {
-    console.error('You need to use the AuthContect inside of an AuthContextProvider');
+    console.error("You need to use the AuthContect inside of an AuthContextProvider");
     return {};
   }
   return value;

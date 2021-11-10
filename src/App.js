@@ -15,6 +15,7 @@ import { Tv } from "./components/TvShow/Tv";
 import { NotFound } from "./components/404/NotFound";
 import { TvDetails } from "./components/TvShow/TvDetails";
 import { Person } from "./components/Person/Person";
+import { Profile } from "./components/Profile/Profile";
 
 function App() {
   return (
@@ -79,6 +80,9 @@ function App() {
             </PrivateRoute>
             <PrivateRoute exact path="/person/:id">
               <Person />
+            </PrivateRoute>
+            <PrivateRoute exact path="/profile">
+              <Profile />
             </PrivateRoute>
             <Route exact path="*">
               <NotFound />

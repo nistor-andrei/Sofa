@@ -32,7 +32,6 @@ export function ExploreAllHome({ type, mainTitle, endpoint, day }) {
   if (!movie) {
     return <h2>Loading...</h2>;
   }
-  console.log(movie[0]);
 
   return (
     <>
