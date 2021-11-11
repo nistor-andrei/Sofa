@@ -72,7 +72,6 @@ export function Auth() {
     } else {
       sendData = register;
     }
-    console.log(sendData);
     const data = await fetch(`http://localhost:3001/${isLogin ? "login" : "register"}`, {
       method: "POST",
       headers: {
@@ -81,8 +80,7 @@ export function Auth() {
       body: JSON.stringify(sendData),
     }).then((res) => res.json());
     if (data.accessToken) {
-      localStorage.setItem("accessToken", data.accessToken);
-      login(data.user);
+      login(data);
       let to = "/";
       if (location.state?.from) {
         to = location.state.from.pathname + location.state.from.search;

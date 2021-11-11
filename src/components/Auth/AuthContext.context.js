@@ -5,7 +5,6 @@ export const AuthContext = React.createContext(null);
 
 function loadFromStorage() {
   const data = localStorage.getItem("auth");
-
   if (data) {
     return JSON.parse(data);
   }

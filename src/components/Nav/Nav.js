@@ -9,9 +9,20 @@ import avatarPlaceholder from "../../assets/image/Group 3413.png";
 import { useEffect, useRef, useState } from "react";
 
 export function Nav() {
-  const { auth } = useAuth();
+  const [user, setUser] = useState({});
+  const { auth, logout } = useAuth();
   const [popover, setPopover] = useState(false);
   const ref = useRef();
+
+  useEffect(() => {
+    fetch(`http://localhost:3001/users/${auth.user.id}`, {
+      headers: {
+        Authorization: `Bearer ${auth.accessToken}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => setUser(data));
+  }, [auth.accessToken, auth.user.id]);
 
   useEffect(() => {
     const checkIfClickedOutside = (e) => {
@@ -58,15 +69,15 @@ export function Nav() {
           <li>
             <button className={styles.accountButton} onClick={handleClick}>
               <img src={avatarPlaceholder} alt="avatar" className={styles.user} />
-              <p>{auth.firstname}</p>
+              <p>{user.firstname}</p>
               {popover && (
                 <nav className={styles.popover} ref={ref}>
                   <Link to="/profile" className={styles.popoverItem}>
                     Profile
                   </Link>
-                  <a href="/" className={styles.popoverItem}>
+                  <Link to="/login" className={styles.popoverItem} onClick={() => logout()}>
                     Sign out
-                  </a>
+                  </Link>
                 </nav>
               )}
             </button>
