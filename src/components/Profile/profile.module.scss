@@ -3,6 +3,9 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  > p {
+    color: #fff;
+  }
 
   form {
     color: #fff;
@@ -112,5 +115,41 @@
 
   .modalFooter {
     margin-top: 1.25rem;
+  }
+}
+
+.uploadFiles {
+  margin-top: 1.25rem;
+  display: flex;
+  align-items: center;
+  button {
+    padding: 8px 16px;
+    border: 0;
+    margin-left: 2rem;
+    background-color: #37ad45;
+    color: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  .uploadButton {
+    background-color: #eee;
+    color: #000;
+    padding: 8px 16px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-bottom: 0;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    &:hover {
+      background-color: #1976d2;
+      color: #fff;
+      img {
+        filter: brightness(0) invert(1);
+      }
+    }
+
+    img {
+      width: 15px;
+      margin-right: 0.5rem;
+    }
   }
 }

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useAuth } from "../Auth/AuthContext.context";
 import { Nav } from "../Nav/Nav";
 import styles from "./profile.module.scss";
+import cloud from "../../assets/icons/cloud-upload-alt-solid.svg";
 
 export function Profile() {
   const { auth, logout } = useAuth();
@@ -12,7 +13,7 @@ export function Profile() {
 
   const [isOpen, setIsOpen] = useState(false);
 
-  async function handleSubmit(e) {
+  async function handleSubmit() {
     const updated = { firstname: profile.firstname, email: profile.email };
     await fetch(`http://localhost:3001/users/${auth.user.id}`, {
       method: "PATCH",
@@ -66,6 +67,16 @@ export function Profile() {
       <main>
         <section className={styles.profile}>
           <h2>Edit Profile</h2>
+          <p>Change your avatar</p>
+
+          <div className={styles.uploadFiles}>
+            <label htmlFor="upload" className={styles.uploadButton}>
+              <img src={cloud} alt="upload" />
+              Choose File
+            </label>
+            <input type="file" id="upload" hidden />
+            <button>Upload</button>
+          </div>
           <form onSubmit={handleSubmit}>
             <label htmlFor="name">Name</label>
             <input type="text" id="name" value={profile.firstname} name="firstname" onChange={handleChange} />
