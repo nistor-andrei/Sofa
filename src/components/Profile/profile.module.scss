@@ -28,7 +28,6 @@
   margin-top: 2rem;
   background-color: #1976d2;
   border: 0;
-  align-self: center;
   color: #fff;
   padding: 1rem 3rem;
   font-size: 1rem;
@@ -37,5 +36,81 @@
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   &:hover {
     background-color: #1363b3;
+  }
+}
+
+.actionButton {
+  align-self: center;
+}
+
+.deleteButton {
+  cursor: pointer;
+  color: #fff;
+  padding: 1rem 3rem;
+  background-color: #d62839;
+  font-size: 1rem;
+  border-radius: 3px;
+  font-weight: 600;
+  border: 0;
+  margin-left: 1.5rem;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  &:hover {
+    background-color: #af2130;
+  }
+}
+
+.modalDelete {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #000;
+  flex-direction: column;
+
+  .modalBody {
+    background-color: #fff;
+    height: 15%;
+    width: 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    font-size: clamp(1rem, 0.9vw, 2rem);
+
+    button {
+      background-color: transparent;
+      border: 0;
+      padding: 0.5rem 2rem;
+      border-radius: 3px;
+      color: #fff;
+      font-family: "Roboto", sans-serif;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .yes {
+      background-color: #d62839;
+      margin-right: 1rem;
+      transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+
+      &:hover {
+        background-color: #af2130;
+      }
+    }
+    .no {
+      background-color: #1976d2;
+      transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+      &:hover {
+        background-color: #1363b3;
+      }
+    }
+  }
+
+  .modalFooter {
+    margin-top: 1.25rem;
   }
 }

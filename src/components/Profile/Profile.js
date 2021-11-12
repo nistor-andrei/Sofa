@@ -4,11 +4,13 @@ import { Nav } from "../Nav/Nav";
 import styles from "./profile.module.scss";
 
 export function Profile() {
-  const { auth } = useAuth();
+  const { auth, logout } = useAuth();
   const [profile, setProfile] = useState({
     firstname: auth.user.firstname,
     email: auth.user.email,
   });
+
+  const [isOpen, setIsOpen] = useState(false);
 
   async function handleSubmit(e) {
     const updated = { firstname: profile.firstname, email: profile.email };
@@ -28,9 +30,39 @@ export function Profile() {
     setProfile(newValue);
   }
 
+  function handleModal(e) {
+    e.preventDefault();
+    setIsOpen(true);
+  }
+  async function handleDelete() {
+    await fetch(`http://localhost:3001/users/${auth.user.id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${auth.accessToken}`,
+      },
+    });
+    logout();
+  }
+
   return (
     <>
       <Nav />
+      {isOpen && (
+        <section className={styles.modalDelete}>
+          <div className={styles.modalBody}>
+            <p>Are you sure ?</p>
+            <div className={styles.modalFooter}>
+              <button className={styles.yes} onClick={handleDelete}>
+                Yes
+              </button>
+              <button className={styles.no} onClick={() => setIsOpen(false)}>
+                No
+              </button>
+            </div>
+          </div>
+        </section>
+      )}
       <main>
         <section className={styles.profile}>
           <h2>Edit Profile</h2>
@@ -39,7 +71,12 @@ export function Profile() {
             <input type="text" id="name" value={profile.firstname} name="firstname" onChange={handleChange} />
             <label htmlFor="email">Email</label>
             <input type="email" id="email" value={profile.email} name="email" onChange={handleChange} />
-            <button className={styles.sendButton}>Edit</button>
+            <div className={styles.actionButton}>
+              <button className={styles.sendButton}>Edit</button>
+              <button className={styles.deleteButton} onClick={handleModal}>
+                Delete
+              </button>
+            </div>
           </form>
         </section>
       </main>
