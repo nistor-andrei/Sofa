@@ -9,7 +9,7 @@ import avatarPlaceholder from '../../assets/image/Group 3413.png';
 import { useEffect, useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-export function Nav({ image }) {
+export function Nav() {
   const [user, setUser] = useState({});
   const { auth, logout } = useAuth();
   const [popover, setPopover] = useState(false);
@@ -72,7 +72,7 @@ export function Nav({ image }) {
           </li>
           <li>
             <button className={styles.accountButton} onClick={handleClick}>
-              <img src={user.url ? auth.user.url : avatarPlaceholder} alt="avatar" className={styles.user} />
+              <img src={user.url ? user.url : avatarPlaceholder} alt="avatar" className={styles.user} />
               <p>{user.firstname}</p>
               {popover && (
                 <nav className={styles.popover} ref={ref}>
