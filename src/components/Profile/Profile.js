@@ -1,8 +1,8 @@
-import { useState } from "react";
-import { useAuth } from "../Auth/AuthContext.context";
-import { Nav } from "../Nav/Nav";
-import styles from "./profile.module.scss";
-import cloud from "../../assets/icons/cloud-upload-alt-solid.svg";
+import { useState } from 'react';
+import { useAuth } from '../Auth/AuthContext.context';
+import { Nav } from '../Nav/Nav';
+import styles from './profile.module.scss';
+import cloud from '../../assets/icons/cloud-upload-alt-solid.svg';
 
 export function Profile() {
   const { auth, logout } = useAuth();
@@ -10,15 +10,16 @@ export function Profile() {
     firstname: auth.user.firstname,
     email: auth.user.email,
   });
-
+  const [imageSelected, setImageSelected] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
+  const [avatar, setAvatar] = useState(null);
 
   async function handleSubmit() {
     const updated = { firstname: profile.firstname, email: profile.email };
     await fetch(`http://localhost:3001/users/${auth.user.id}`, {
-      method: "PATCH",
+      method: 'PATCH',
       headers: {
-        "Content-type": "application/json",
+        'Content-type': 'application/json',
         Authorization: `Bearer ${auth.accessToken}`,
       },
       body: JSON.stringify(updated),
@@ -37,13 +38,44 @@ export function Profile() {
   }
   async function handleDelete() {
     await fetch(`http://localhost:3001/users/${auth.user.id}`, {
-      method: "DELETE",
+      method: 'DELETE',
       headers: {
-        "Content-type": "application/json",
+        'Content-type': 'application/json',
         Authorization: `Bearer ${auth.accessToken}`,
       },
     });
     logout();
+  }
+
+  async function uploadImage() {
+    const formData = new FormData();
+    formData.append('file', imageSelected);
+    formData.append('upload_preset', 'ha4mspba');
+
+    const image = await fetch('https://api.cloudinary.com/v1_1/andreimn/image/upload', {
+      method: 'POST',
+      body: formData,
+    }).then((res) => res.json());
+
+    setAvatar(image.url);
+  }
+
+  async function handleUpload() {
+    const data = await fetch(`http://localhost:3001/users/${auth.user.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-type': 'application/json',
+        Authorization: `Bearer ${auth.accessToken}`,
+      },
+      body: JSON.stringify({
+        url: avatar,
+      }),
+    }).then((res) => res.json());
+
+    console.log(data);
+  }
+  if (avatar) {
+    handleUpload();
   }
 
   return (
@@ -74,8 +106,15 @@ export function Profile() {
               <img src={cloud} alt="upload" />
               Choose File
             </label>
-            <input type="file" id="upload" hidden />
-            <button>Upload</button>
+            <input
+              type="file"
+              id="upload"
+              hidden
+              onChange={(e) => {
+                setImageSelected(e.target.files[0]);
+              }}
+            />
+            <button onClick={uploadImage}>Upload</button>
           </div>
           <form onSubmit={handleSubmit}>
             <label htmlFor="name">Name</label>

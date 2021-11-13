@@ -1,17 +1,19 @@
-import home from "../../assets/icons/home.svg";
-import movie from "../../assets/icons/clapperboard.svg";
-import tv from "../../assets/icons/XMLID_1988_.svg";
-import search from "../../assets/icons/loupe.svg";
-import styles from "./nav.module.scss";
-import { Link, NavLink } from "react-router-dom";
-import { useAuth } from "../Auth/AuthContext.context";
-import avatarPlaceholder from "../../assets/image/Group 3413.png";
-import { useEffect, useRef, useState } from "react";
+import home from '../../assets/icons/home.svg';
+import movie from '../../assets/icons/clapperboard.svg';
+import tv from '../../assets/icons/XMLID_1988_.svg';
+import search from '../../assets/icons/loupe.svg';
+import styles from './nav.module.scss';
+import { Link, NavLink } from 'react-router-dom';
+import { useAuth } from '../Auth/AuthContext.context';
+import avatarPlaceholder from '../../assets/image/Group 3413.png';
+import { useEffect, useRef, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
-export function Nav() {
+export function Nav({ image }) {
   const [user, setUser] = useState({});
   const { auth, logout } = useAuth();
   const [popover, setPopover] = useState(false);
+  const history = useHistory();
   const ref = useRef();
 
   useEffect(() => {
@@ -21,8 +23,10 @@ export function Nav() {
       },
     })
       .then((res) => res.json())
-      .then((data) => setUser(data));
-  }, [auth.accessToken, auth.user.id]);
+      .then((data) => {
+        setUser(data);
+      });
+  }, [auth.accessToken, auth.user.id, history]);
 
   useEffect(() => {
     const checkIfClickedOutside = (e) => {
@@ -31,10 +35,10 @@ export function Nav() {
       }
     };
 
-    document.addEventListener("mousedown", checkIfClickedOutside);
+    document.addEventListener('mousedown', checkIfClickedOutside);
 
     return () => {
-      document.removeEventListener("mousedown", checkIfClickedOutside);
+      document.removeEventListener('mousedown', checkIfClickedOutside);
     };
   }, [popover]);
 
@@ -68,7 +72,7 @@ export function Nav() {
           </li>
           <li>
             <button className={styles.accountButton} onClick={handleClick}>
-              <img src={avatarPlaceholder} alt="avatar" className={styles.user} />
+              <img src={user.url ? auth.user.url : avatarPlaceholder} alt="avatar" className={styles.user} />
               <p>{user.firstname}</p>
               {popover && (
                 <nav className={styles.popover} ref={ref}>

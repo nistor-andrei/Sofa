@@ -2,8 +2,9 @@
   "users": [
     {
       "email": "asd@yahoo.com",
-      "password": "$2a$10$Fo9le8D.3T2AMz2M43eyqOA6Gj53dQyNX6Iil2T.mhO0vhxO6ZjK.",
+      "password": "$2a$10$FTiqt3ARPSLR7r8wpPVJlu435PrRplrAcMzgnJjkH8Y2nUWlolRvO",
       "firstname": "Andrei",
+      "url": "http://res.cloudinary.com/andreimn/image/upload/v1636835479/hdm3eqi82wq4fsjsibgu.jpg",
       "id": 1
     }
   ]
