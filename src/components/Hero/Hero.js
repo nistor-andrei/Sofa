@@ -1,8 +1,8 @@
-import { getMovieRandom } from "../api/api";
-import { useEffect, useState } from "react";
-import styles from "../Home/home.module.scss";
-import star from "../../assets/icons/star-solid.svg";
-import { Link } from "react-router-dom";
+import { getMovieRandom } from '../api/api';
+import { useEffect, useState } from 'react';
+import styles from '../Home/home.module.scss';
+import star from '../../assets/icons/star-solid.svg';
+import { Link } from 'react-router-dom';
 
 export function Hero({ mediaType }) {
   const [movie, setMovie] = useState({});
@@ -21,9 +21,9 @@ export function Hero({ mediaType }) {
   let year;
 
   if (movie.release_date) {
-    year = movie.release_date?.split("-");
+    year = movie.release_date?.split('-');
   } else {
-    year = movie.first_air_date?.split("-");
+    year = movie.first_air_date?.split('-');
   }
 
   function timeConvert(n) {
@@ -31,13 +31,13 @@ export function Hero({ mediaType }) {
     let rhours = Math.floor(hours);
     let minutes = (hours - rhours) * 60;
     let rminutes = Math.round(minutes);
-    return rhours + "h " + rminutes + "min";
+    return rhours + 'h ' + rminutes + 'min';
   }
   return (
     <>
       <div className={`${styles.hero} hero`}>
         <div className={styles.panel}>
-          <Link to={mediaType + "/" + movie.id}>
+          <Link to={mediaType + '/' + movie.id}>
             <h2>{movie.original_title || movie.name}</h2>
           </Link>
           <div className={styles.details}>
@@ -49,10 +49,10 @@ export function Hero({ mediaType }) {
             <span>{year?.[0]}</span>
             <span> {movie.runtime ? timeConvert(movie.runtime) : `Seasons ${movie.seasons?.length} `}</span>
           </div>
-          <p>{movie.overview?.substring(0, 200) + "..."}</p>
+          <p>{movie.overview?.substring(0, 200) + '...'}</p>
         </div>
         <div className={styles.image}>
-          <img src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`} alt={movie.original_title} className={styles.poster} />
+          <img src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`} alt={movie.original_title} className={styles.poster} />
         </div>
       </div>
     </>

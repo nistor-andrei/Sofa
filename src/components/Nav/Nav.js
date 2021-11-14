@@ -8,6 +8,7 @@ import { useAuth } from '../Auth/AuthContext.context';
 import avatarPlaceholder from '../../assets/image/Group 3413.png';
 import { useEffect, useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { isJwtExpired } from 'jwt-check-expiration';
 
 export function Nav() {
   const [user, setUser] = useState({});
@@ -17,6 +18,10 @@ export function Nav() {
   const ref = useRef();
 
   useEffect(() => {
+    if (isJwtExpired(auth.accessToken)) {
+      logout();
+      history.push('/login');
+    }
     fetch(`http://localhost:3001/users/${auth.user.id}`, {
       headers: {
         Authorization: `Bearer ${auth.accessToken}`,
@@ -26,7 +31,7 @@ export function Nav() {
       .then((data) => {
         setUser(data);
       });
-  }, [auth.accessToken, auth.user.id, history]);
+  }, [auth.accessToken, auth.user.id, history, logout]);
 
   useEffect(() => {
     const checkIfClickedOutside = (e) => {
