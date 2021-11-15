@@ -1,5 +1,9 @@
 .results {
   margin: 5rem;
+
+  a{
+    color:#fff
+  }
 }
 
 .grid {
@@ -10,5 +14,22 @@
   .star {
     width: 15px;
     margin-right: 3px;
+  }
+}
+
+
+.form {
+  margin-left:100px;
+  input {
+    width: 100%;
+    border: 0;
+    padding: 2rem;
+    background-color: #202124;
+    font-size: 1.1rem;
+    color: #fff;
+    &:focus {
+      outline: none;
+      border: 0;
+    }
   }
 }

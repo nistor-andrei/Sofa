@@ -1,17 +1,18 @@
 import { Nav } from "../Nav/Nav";
-import { FormSearch } from "../feature/FormSearch";
 import { useState } from "react";
 import { search, imageUrl } from "../api/api";
 import styles from "./search.module.scss";
 import placeholder from "../../assets/image/Group 3406.png";
 import star from "../../assets/icons/star-solid.svg";
 import InfiniteScroll from "react-infinite-scroll-component";
+import {Link} from "react-router-dom";
 
 export function Search() {
   const [page, setPage] = useState(1);
   const [hasMore, sethasMore] = useState(true);
   const [input, setInput] = useState();
   const [movies, setMovies] = useState([]);
+  
 
   async function handleChange(e) {
     e?.preventDefault();
@@ -20,24 +21,36 @@ export function Search() {
     if (!e.target.value) setMovies([]);
 
     const data = await search(e.target.value, page);
-    setPage((prev) => prev + 1);
+    if(data.results){
     setTimeout(setMovies([...movies, ...data.results]), 2000);
     if (data.results.length === 0 || data.results.length < 20) {
       sethasMore(false); // same here
     }
+    }
+  }
+
+
+  async function handleNext(){
+    setPage(prev=>prev+1)
   }
 
   return (
     <>
       <Nav />
+    <div className={styles.form}>
+      <form>
+        <div>
+          <input id="search" name="search" type="text" placeholder="Search for a movie, tv show or person..." value={input} onChange={handleChange} />
+        </div>
+      </form>
+    </div>
       <main className={styles.search}>
-        <FormSearch change={handleChange} input={input} />
         <section className={styles.results}>
           <h2>Search result for {input}</h2>
           <ul>
             <InfiniteScroll
               dataLength={movies.length} //This is important field to render the next data
-              next={handleChange}
+              next={()=> handleNext()}
               hasMore={hasMore}
               loader={<h2>Loading..</h2>}
               endMessage={<h2>You are at the end!</h2>}
@@ -47,6 +60,7 @@ export function Search() {
                 movies.map((movie) => {
                   return (
                     <li key={movie.id}>
+                    <Link to={`/${movie.media_type}/${movie.id}`}>
                       {movie.poster_path ? (
                         <img
                           src={!movie.poster_path ? placeholder : imageUrl("w370_and_h556_bestv2") + movie.poster_path}
@@ -65,6 +79,7 @@ export function Search() {
                           {movie.vote_average}
                         </span>
                       )}
+                      </Link>
                     </li>
                   );
                 })}

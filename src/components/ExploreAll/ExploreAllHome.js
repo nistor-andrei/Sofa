@@ -11,7 +11,6 @@ import { Link } from "react-router-dom";
 // Exemple URL API: https://${url}/3/mediaType/endpoint?apikey=....
 
 export function ExploreAllHome({ type, mainTitle, endpoint, day }) {
-  console.log(type);
   const [page, setPage] = useState(1);
   const [movie, setMovie] = useState([]);
   const [hasMore, sethasMore] = useState(true);
@@ -32,6 +31,8 @@ export function ExploreAllHome({ type, mainTitle, endpoint, day }) {
   if (!movie) {
     return <h2>Loading...</h2>;
   }
+  
+
 
   return (
     <>
@@ -48,12 +49,12 @@ export function ExploreAllHome({ type, mainTitle, endpoint, day }) {
               endMessage={<h2>You are at the end!</h2>}
               className={styles.grid}
             >
-              {movie?.map((image) => {
+              {movie?.map((image,index) => {
                 return (
-                  <Link to={type === "movie" ? `/${type}/${image.id}` : `/${type}/${image.id}`}>
-                    <li className={styles.gridItem} key={image.id}>
+                  <Link to={type === "movie" ? `/${type}/${image.id}` : `/${type}/${image.id}`} key={image.id}>
+                    <li className={styles.gridItem} >
                       <img src={`https://image.tmdb.org/t/p/w370_and_h556_bestv2/${image.poster_path}`} alt={image.name} />
-                      <p className={styles.title}>{image.original_title}</p>
+                      <p className={styles.title}>{image.original_title}  {image.name}</p>
                       <span className={styles.star}>
                         <img src={star} alt="star" />
                         {image.vote_average}
