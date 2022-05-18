@@ -1,9 +1,9 @@
-import { Link, useLocation, useHistory } from 'react-router-dom';
-import styles from './auth.module.scss';
-import logo from '../../assets/icons/surface1.svg';
-import danger from '../../assets/icons/warning_white_24dp.svg';
-import { useState } from 'react';
-import { useAuth } from './AuthContext.context';
+import { Link, useLocation, useHistory } from "react-router-dom";
+import styles from "./auth.module.scss";
+import logo from "../../assets/icons/surface1.svg";
+import danger from "../../assets/icons/warning_white_24dp.svg";
+import { useState } from "react";
+import { useAuth } from "./AuthContext.context";
 
 function Nav() {
   return (
@@ -18,28 +18,28 @@ export function Auth() {
   const location = useLocation();
 
   const [values, setValues] = useState({
-    email: '',
-    password: '',
-    'retype-password': '',
-    firstname: '',
+    email: "",
+    password: "",
+    "retype-password": "",
+    firstname: "",
   });
 
   const [errors, setErrors] = useState({
-    email: '',
-    password: '',
-    'retype-password': '',
-    firstname: '',
+    email: "",
+    password: "",
+    "retype-password": "",
+    firstname: "",
   });
 
-  const [apiError, setApiError] = useState('');
+  const [apiError, setApiError] = useState("");
 
   if (auth) {
-    history.push('/');
+    history.push("/");
     return null;
   }
 
   let isLogin = false;
-  if (location.pathname.includes('login')) {
+  if (location.pathname.includes("login")) {
     isLogin = true;
   }
 
@@ -47,11 +47,11 @@ export function Auth() {
     const newValue = { ...values };
     newValue[e.target.name] = e.target.value;
     const newErrors = { ...errors };
-    newErrors[e.target.name] = '';
+    newErrors[e.target.name] = "";
 
     setValues(newValue);
     setErrors(newErrors);
-    setApiError('');
+    setApiError("");
   }
 
   async function handleSubmit(e) {
@@ -60,12 +60,15 @@ export function Auth() {
       return;
     }
 
-    const loginForm = { email: values.email, password: values.password };
+    const loginForm = {
+      email: values.email,
+      password: values.password,
+    };
     const register = {
       email: values.email,
       password: values.password,
       firstname: values.firstname,
-      url: '',
+      url: "",
     };
     let sendData;
     if (isLogin) {
@@ -73,18 +76,23 @@ export function Auth() {
     } else {
       sendData = register;
     }
-    const data = await fetch(`http://localhost:3001/${isLogin ? 'login' : 'register'}`, {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify(sendData),
-    }).then((res) => res.json());
+    console.log(windo);
+    const data = await fetch(
+      `${window.location.hostname}${isLogin ? "login" : "register"}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(sendData),
+      }
+    ).then((res) => res.json());
     if (data.accessToken) {
       login(data);
-      let to = '/';
+      let to = "/";
       if (location.state?.from) {
-        to = location.state.from.pathname + location.state.from.search;
+        to =
+          location.state.from.pathname + location.state.from.search;
       }
       history.push(to);
       return null;
@@ -99,21 +107,21 @@ export function Auth() {
 
     if (!values.email) {
       isValid = false;
-      newErrors.email = 'Please enter your email';
+      newErrors.email = "Please enter your email";
     }
 
     if (!values.password) {
       isValid = false;
-      newErrors.password = 'Please choose a password';
+      newErrors.password = "Please choose a password";
     }
 
     if (!isLogin && !values.firstname) {
       isValid = false;
-      newErrors.firstname = 'Please enter your name';
+      newErrors.firstname = "Please enter your name";
     }
-    if (!isLogin && values.password !== values['retype-password']) {
+    if (!isLogin && values.password !== values["retype-password"]) {
       isValid = false;
-      newErrors['retype-password'] = 'Your passwords did not match';
+      newErrors["retype-password"] = "Your passwords did not match";
     }
 
     setErrors(newErrors);
@@ -126,20 +134,52 @@ export function Auth() {
         <Nav />
         <div className={styles.center}>
           <div className={styles.box}>
-            <h2>{isLogin ? 'Sign in' : 'Sign up'}</h2>
+            <h2>{isLogin ? "Sign in" : "Sign up"}</h2>
             <form onSubmit={handleSubmit}>
-              {errors && <p className={styles.danger}>{errors.email}</p>}
-              <input type="text" placeholder="Email" name="email" value={values.email} className={styles.input} onChange={handleChange} />
-              {errors && <p className={styles.danger}>{errors.password}</p>}
-              <input type="password" placeholder="Password" name="password" value={values.password} className={styles.input} onChange={handleChange} />
+              {errors && (
+                <p className={styles.danger}>{errors.email}</p>
+              )}
+              <input
+                type="text"
+                placeholder="Email"
+                name="email"
+                value={values.email}
+                className={styles.input}
+                onChange={handleChange}
+              />
+              {errors && (
+                <p className={styles.danger}>{errors.password}</p>
+              )}
+              <input
+                type="password"
+                placeholder="Password"
+                name="password"
+                value={values.password}
+                className={styles.input}
+                onChange={handleChange}
+              />
               {!isLogin && (
                 <>
-                  <input type="password" placeholder="Retype Password" value={values['retype-password']} name="retype-password" className={styles.input} onChange={handleChange} />
-                  <input type="text" placeholder="Your name" value={values.firstname} name="firstname" className={styles.input} onChange={handleChange} />
+                  <input
+                    type="password"
+                    placeholder="Retype Password"
+                    value={values["retype-password"]}
+                    name="retype-password"
+                    className={styles.input}
+                    onChange={handleChange}
+                  />
+                  <input
+                    type="text"
+                    placeholder="Your name"
+                    value={values.firstname}
+                    name="firstname"
+                    className={styles.input}
+                    onChange={handleChange}
+                  />
                 </>
               )}
               <button type="submit" className={styles.button}>
-                {isLogin ? 'Sign in' : 'Sign up'}
+                {isLogin ? "Sign in" : "Sign up"}
               </button>
             </form>
             <p className={styles.paragraph}>
@@ -147,7 +187,12 @@ export function Auth() {
             </p>
             {apiError && (
               <div className={styles.alert}>
-                <img src={danger} width="30px" className={styles.dangersign} alt="alert" />
+                <img
+                  src={danger}
+                  width="30px"
+                  className={styles.dangersign}
+                  alt="alert"
+                />
                 {apiError}
               </div>
             )}
