@@ -76,7 +76,6 @@ export function Auth() {
     } else {
       sendData = register;
     }
-    console.log(windo);
     const data = await fetch(
       `${window.location.hostname}${isLogin ? "login" : "register"}`,
       {
